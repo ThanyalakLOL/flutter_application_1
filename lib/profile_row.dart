@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_application_1/app_screen/edit_varaible/edit_phone_num_page.dart';
-import 'package:flutter_application_1/app_screen/edit_varaible/edit_text_page.dart';
+import 'package:flutter_application_1/app_screens/edit_varaible/edit_phone_num_page.dart';
+import 'package:flutter_application_1/app_screens/edit_varaible/edit_text_page.dart';
 
 class ProfileRow extends StatefulWidget {
   ProfileRow(
@@ -29,7 +29,7 @@ class _ProfileRowState extends State<ProfileRow> {
             child: Text(
               widget.topic,
               style: TextStyle(
-                  fontFamily: "Comfortaa", fontSize: 15, color: Colors.black),
+                  fontFamily: "Comfortaa", fontSize: 17, color: Colors.black),
             ),
           ),
         ),
