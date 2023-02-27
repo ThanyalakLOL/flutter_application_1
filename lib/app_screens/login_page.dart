@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:project_find_dorm/app_screens/signup_page.dart';
 
-import 'login_page.dart';
-
-class SignupPage extends StatefulWidget {
-  const SignupPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
   bool _showPassword = false;
-  bool _showConfirmPassword = false;
 
   void _togglePasswordVisibility() {
     setState(() {
       _showPassword = !_showPassword;
-    });
-  }
-
-  void _toggleConfirmPasswordVisibility() {
-    setState(() {
-      _showConfirmPassword = !_showConfirmPassword;
     });
   }
 
@@ -58,15 +50,27 @@ class _SignupPageState extends State<SignupPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: 10, bottom: 10),
-                      child: Text("Sign Up",
+                      margin: EdgeInsets.all(10),
+                      child: Text("Welcome Back!",
                           style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                               color: Colors.black)),
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                            margin: EdgeInsets.only(left: 10),
+                            child: Text("Sign into your account",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.grey)))
+                      ],
+                    ),
                     SizedBox(
-                      height: 10,
+                      height: 30,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -109,7 +113,7 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 30,
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -163,66 +167,23 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 10,
-                              spreadRadius: 6,
-                              offset: Offset(1, 1),
-                              color: Colors.grey.withOpacity(0.2),
-                            ),
-                          ]),
-                      height: 50,
-                      child: TextField(
-                        obscureText:
-                            !_showConfirmPassword, // add this line to show dots instead of text
-
-                        decoration: InputDecoration(
-                          hintText: "Confirm password",
-                          hintStyle: TextStyle(fontSize: 16),
-                          prefixIcon: Icon(
-                            Icons.password_outlined,
-                            color: Colors.deepPurple,
-                          ),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _showConfirmPassword
-                                  ? Icons.visibility_outlined
-                                  : Icons.visibility_off_outlined,
-                              color: Colors.deepPurple,
-                            ),
-                            onPressed: _toggleConfirmPasswordVisibility,
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 1),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 1),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical:
-                                  12), // adjust the padding value as needed
-                        ),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                            margin: EdgeInsets.all(10),
+                            child: Text("Forgot your password",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.grey)))
+                      ],
                     ),
                   ],
                 ),
               ),
               SizedBox(
-                height: 20,
+                height: 50,
               ),
               Container(
                 alignment: Alignment.center,
@@ -233,95 +194,20 @@ class _SignupPageState extends State<SignupPage> {
                   color: Colors.deepPurple,
                   borderRadius: BorderRadius.circular(30),
                 ),
-                child: Text("Sign Up",
+                child: Text("Sign in",
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.normal,
                         color: Colors.white)),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.only(left: 12),
-                      child: Divider(
-                        color: Colors.grey,
-                        thickness: 0.3,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Text(
-                      'Or sign up with',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.only(right: 12),
-                      child: Divider(
-                        color: Colors.grey,
-                        thickness: 0.3,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Wrap(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.7),
-                          spreadRadius: 3,
-                          blurRadius: 5,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage('images/google.png'),
-                      radius: 25,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.7),
-                          spreadRadius: 3,
-                          blurRadius: 5,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('images/facebook.png'),
-                      radius: 25,
-                    ),
-                  ),
-                ],
-              ),
               Container(
-                height: 35,
+                height: 70,
                 width: width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("Already have an account? ",
+                    Text("Don't have an account? ",
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.normal,
@@ -330,11 +216,11 @@ class _SignupPageState extends State<SignupPage> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(builder: (context) => SignupPage()),
                         );
                       },
                       child: Text(
-                        "Login",
+                        "Create",
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.normal,
