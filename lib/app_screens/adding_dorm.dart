@@ -1,5 +1,10 @@
+import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_application_1/material_color.dart';
+import 'package:scrollable_clean_calendar/scrollable_clean_calendar.dart';
+import 'package:scrollable_clean_calendar/utils/enums.dart';
 
 class Adding extends StatefulWidget {
   const Adding({Key? key}) : super(key: key);
@@ -21,6 +26,30 @@ class _AddingState extends State<Adding> {
   ];
 
   String? selectedValue;
+
+  final List<String> type = [
+    'รายวัน',
+    'รายเดือน',
+    'รายปี',
+  ];
+  String? selectedType;
+
+  final List<String> zone = [
+    'กังสดาล',
+    'หลังมอ',
+    'โคลัมโบ',
+    'โนนม่วง',
+    'หอกาญจนา',
+  ];
+  String? selectedZone;
+
+  final List<String> water_unit = [
+    'บาท/เดือน',
+    'บาท/หน่วย',
+    'บาท/คน',
+  ];
+  String? selectedWater_unit;
+
   final TextEditingController textEditingController = TextEditingController();
 
   @override
@@ -38,188 +67,327 @@ class _AddingState extends State<Adding> {
         title: const Text("Adding"),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.all(10),
-              width: width,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text("Dormitory name",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey)),
-                    margin: EdgeInsets.only(bottom: 10),
-                  ),
-                  Container(
-                    width: width,
-                    child: DropdownButtonHideUnderline(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.grey,
-                            width: 1.0,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.all(10),
+                width: width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text("Dormitory name",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey)),
+                      margin: EdgeInsets.only(bottom: 10),
+                    ),
+                    Container(
+                      width: width,
+                      child: DropdownButtonHideUnderline(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.grey,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: DropdownButton2(
-                          isExpanded: true,
-                          hint: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text(
-                              'Select your dormitory',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Theme.of(context).hintColor,
+                          child: DropdownButton2(
+                            isExpanded: true,
+                            hint: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                'Select your dormitory',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Theme.of(context).hintColor,
+                                ),
                               ),
                             ),
-                          ),
-                          items: items
-                              .map((item) => DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Text(
-                                        item,
-                                        style: const TextStyle(
-                                          fontSize: 14,
+                            items: items
+                                .map((item) => DropdownMenuItem<String>(
+                                      value: item,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Text(
+                                          item,
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ))
-                              .toList(),
-                          value: selectedValue,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedValue = value as String;
-                            });
-                          },
-                          buttonHeight: 40,
-                          buttonWidth: 200,
-                          itemHeight: 40,
-                          dropdownMaxHeight: 200,
-                          searchController: textEditingController,
-                          searchInnerWidgetHeight: 50,
-                          searchInnerWidget: Container(
-                            height: 50,
-                            padding: const EdgeInsets.only(
-                              top: 8,
-                              bottom: 4,
-                              right: 8,
-                              left: 8,
-                            ),
-                            child: TextFormField(
-                              expands: true,
-                              maxLines: null,
-                              controller: textEditingController,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                contentPadding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 8,
-                                ),
-                                hintText: 'Search for an item...',
-                                hintStyle: const TextStyle(fontSize: 12),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8),
+                                    ))
+                                .toList(),
+                            value: selectedValue,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedValue = value as String;
+                              });
+                            },
+                            buttonHeight: 40,
+                            buttonWidth: 200,
+                            itemHeight: 40,
+                            dropdownMaxHeight: 200,
+                            searchController: textEditingController,
+                            searchInnerWidgetHeight: 50,
+                            searchInnerWidget: Container(
+                              height: 50,
+                              padding: const EdgeInsets.only(
+                                top: 8,
+                                bottom: 4,
+                                right: 8,
+                                left: 8,
+                              ),
+                              child: TextFormField(
+                                expands: true,
+                                maxLines: null,
+                                controller: textEditingController,
+                                decoration: InputDecoration(
+                                  isDense: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 8,
+                                  ),
+                                  hintText: 'Search for an item...',
+                                  hintStyle: const TextStyle(fontSize: 12),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
                                 ),
                               ),
                             ),
+                            searchMatchFn: (item, searchValue) {
+                              return (item.value
+                                  .toString()
+                                  .contains(searchValue));
+                            },
+                            //This to clear the search value when you close the menu
+                            onMenuStateChange: (isOpen) {
+                              if (!isOpen) {
+                                textEditingController.clear();
+                              }
+                            },
                           ),
-                          searchMatchFn: (item, searchValue) {
-                            return (item.value
-                                .toString()
-                                .contains(searchValue));
-                          },
-                          //This to clear the search value when you close the menu
-                          onMenuStateChange: (isOpen) {
-                            if (!isOpen) {
-                              textEditingController.clear();
-                            }
-                          },
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              width: width,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text("Insert Picture",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey)),
-                    margin: EdgeInsets.only(bottom: 10),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(8),
-                    width: width,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.grey,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
+              Container(
+                margin: EdgeInsets.all(10),
+                width: width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text("Insert Picture",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey)),
+                      margin: EdgeInsets.only(bottom: 10),
                     ),
-                    // color: Colors.cyanAccent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          child: Image.asset("images/iconimage.png"),
-                          height: 80,
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      width: width,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey,
+                          width: 1,
                         ),
-                        Expanded(
-                            child: Container(
-                          child: Center(
-                            child: Text(
-                              "Add pictures",
-                            ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      // color: Colors.cyanAccent,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            child: Image.asset("images/iconimage.png"),
+                            height: 80,
                           ),
-                        )),
+                          Expanded(
+                              child: Container(
+                            child: Center(
+                              child: Text(
+                                "Add pictures",
+                              ),
+                            ),
+                          )),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.all(10),
+                width: width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text("Select domitory's facilities",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey)),
+                      margin: EdgeInsets.only(bottom: 10),
+                    ),
+                    Facility(
+                      facilities: [
+                        "เครื่องทำน้ำอุ่น",
+                        "ลิฟต์",
+                        'แอร์',
+                        'ตู้เย็น',
+                        'ทีวี',
+                        "เครื่องทำน้ำอุ่น",
+                        "ลิฟต์",
+                        'แอร์',
+                        'ตู้เย็น',
+                        'ทีวี',
+                        "เครื่องทำน้ำอุ่น",
+                        "ลิฟต์",
+                        'แอร์',
+                        'ตู้เย็น',
+                        'ทีวี',
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              width: width,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Text("Select domitory's facilities",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey)),
-                    margin: EdgeInsets.only(bottom: 10),
-                  ),
-                  Facility(
-                    facilities: [
-                      "เครื่องทำน้ำอุ่น",
-                      "ลิฟต์",
-                      'แอร์',
-                      'ตู้เย็น',
-                      'ทีวี'
-                    ],
-                  ),
-                ],
+              Container(
+                margin: EdgeInsets.all(10),
+                width: width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text("Type",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey)),
+                      margin: EdgeInsets.only(bottom: 10),
+                    ),
+                    Container(
+                      width: width,
+                      child: CustomDropdownButton2(
+                        hint: 'Select Type',
+                        dropdownItems: type,
+                        value: selectedType,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedType = value;
+                          });
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      child: Text("Zone",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey)),
+                      margin: EdgeInsets.only(bottom: 10),
+                    ),
+                    Container(
+                      width: width,
+                      child: CustomDropdownButton2(
+                        hint: 'Select Zone',
+                        dropdownItems: zone,
+                        value: selectedZone,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedZone = value;
+                          });
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Divider(),
+                    Container(
+                      child: Text("ค่าน้ำ/ค่าไฟ",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey)),
+                      margin: EdgeInsets.only(bottom: 10),
+                    ),
+                    Container(
+                        height: 40,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            labelText: 'ค่าไฟ',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(14.0),
+                              borderSide: BorderSide(color: Colors.grey),
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 12.0),
+                            suffixText: 'Bath/Unit',
+                            suffixStyle: TextStyle(color: Colors.grey),
+                          ),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                        )),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                              margin: EdgeInsets.only(right: 10),
+                              height: 40,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  labelText: 'ค่าน้ำ',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(14.0),
+                                    borderSide: BorderSide(color: Colors.grey),
+                                  ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 8.0, horizontal: 12.0),
+                                  suffixText: '',
+                                  suffixStyle: TextStyle(color: Colors.grey),
+                                ),
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  FilteringTextInputFormatter.digitsOnly
+                                ],
+                              )),
+                        ),
+                        Container(
+                          width: width * 0.6,
+                          child: CustomDropdownButton2(
+                            hint: 'Select Zone',
+                            dropdownItems: water_unit,
+                            value: selectedWater_unit,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedWater_unit = value;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -247,7 +415,7 @@ class _ChipschoiceState extends State<Chipschoice> {
       if (states.any(interactiveStates.contains)) {
         return Colors.blue;
       }
-      return Colors.red;
+      return myMaterialColor;
     }
 
     return Checkbox(
@@ -305,12 +473,50 @@ class _FacilityState extends State<Facility> {
   Widget buildFacilityRow(String facility) {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 10, left: 10),
+        Center(
           child: Chipschoice(),
         ),
         Text(facility),
       ],
+    );
+  }
+}
+
+class DormType extends StatefulWidget {
+  const DormType({Key? key}) : super(key: key);
+
+  @override
+  State<DormType> createState() => _DormTypeState();
+}
+
+class _DormTypeState extends State<DormType> {
+  final List<String> type = [
+    'Item1',
+    'Item2',
+    'Item3',
+    'Item4',
+    'Item5',
+    'Item6',
+    'Item7',
+    'Item8',
+  ];
+  String? selectedType;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: CustomDropdownButton2(
+          hint: 'Select Item',
+          dropdownItems: type,
+          value: selectedType,
+          onChanged: (value) {
+            setState(() {
+              selectedType = value;
+            });
+          },
+        ),
+      ),
     );
   }
 }
