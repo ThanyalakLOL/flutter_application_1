@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_application_1/app_screens/adding_page.dart';
+
 import 'package:flutter_application_1/filter_scrollable.dart';
 import 'package:flutter_application_1/material_color.dart';
 import 'package:flutter_application_1/custom_search.dart';
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     });
     switch (i) {
       case 0:
-        Navigator.pushNamed(context, '/login_page');
+        Navigator.pushNamed(context, '/adding_page');
         break;
       case 1:
         Navigator.pushNamed(context, '/fav_page');

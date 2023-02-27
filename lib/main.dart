@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app_screens/adding_dorm.dart';
-
-import 'package:flutter_application_1/app_screens/adding_page.dart';
 import 'package:flutter_application_1/app_screens/create_acoount.dart';
 import 'package:flutter_application_1/app_screens/detailpage.dart';
 import 'package:flutter_application_1/app_screens/home_page.dart';
@@ -27,7 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
-        '/adding_page': (context) => const AddingPage(),
+        '/adding_page': (context) => const Adding(),
         '/fav_page': (context) => const WishListDormPage(),
         '/profile_page': (context) => const ProfileEditPage(),
         '/create_account_page': (context) => const CreateAccountPage(),
