@@ -25,14 +25,30 @@ class _FilterSelectedState extends State<FilterSelected> {
       children: [
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-    primary: Colors.blue, // Button background color
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(18.0),
-    ),
-    elevation: 5, // Elevation of the button
-  ),
+            primary: Colors.blue, // Button background color
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+            ),
+            elevation: 5, // Elevation of the button
+          ),
           onPressed: () {},
-          child:  Row(
+          child: Container(
+            height: 35,
+            margin: const EdgeInsets.only(right: 5, bottom: 5),
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(18)),
+              color: myMaterialColor,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Row(
               children: [
                 Container(
                     // padding: EdgeInsets.only(bottom: 10, right: 5),

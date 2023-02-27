@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_application_1/app_screens/adding_page.dart';
+import 'package:flutter_application_1/app_screens/create_acoount.dart';
 import 'package:flutter_application_1/app_screens/home_page.dart';
 import 'package:flutter_application_1/app_screens/profile_edit_page.dart';
 import 'package:flutter_application_1/app_screens/signup_page.dart';
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/adding_page': (context) => const AddingPage(),
         '/fav_page': (context) => const WishListDormPage(),
         '/profile_page': (context) => const ProfileEditPage(),
-        '/signup_page': (context) => const SignUpPage(),
+        '/signup_page': (context) => const CreateAccountPage(),
       },
       theme: ThemeData(
         iconTheme: IconThemeData(color: Colors.black87),
