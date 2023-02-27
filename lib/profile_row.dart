@@ -29,7 +29,7 @@ class _ProfileRowState extends State<ProfileRow> {
             child: Text(
               widget.topic,
               style: TextStyle(
-                  fontFamily: "Comfortaa", fontSize: 17, color: Colors.black),
+                  fontFamily: "Comfortaa", fontSize: 15, color: Colors.black),
             ),
           ),
         ),
