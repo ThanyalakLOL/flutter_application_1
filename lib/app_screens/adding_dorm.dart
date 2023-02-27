@@ -162,6 +162,7 @@ class _AddingState extends State<Adding> {
                     margin: EdgeInsets.only(bottom: 10),
                   ),
                   Container(
+                    padding: EdgeInsets.all(8),
                     width: width,
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -175,7 +176,7 @@ class _AddingState extends State<Adding> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
-                          child: Image.asset("images/logo.jpg"),
+                          child: Image.asset("images/iconimage.png"),
                           height: 80,
                         ),
                         Expanded(

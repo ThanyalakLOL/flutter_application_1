@@ -193,53 +193,55 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ImageSlider(),
-            NameDorm(),
-            Divider(),
-            Container(
-              padding: EdgeInsets.all(10),
-              width: MediaQuery.of(context).size.width,
-              child: Text('Facilities',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black)),
-            ),
-            Facility(
-              facilities: [
-                "เครื่องทำน้ำอุ่น",
-                "ลิฟต์",
-                'แอร์',
-                'ตู้เย็น',
-                'ทีวี'
-              ],
-            ),
-            Divider(),
-            Container(
-              padding: EdgeInsets.all(10),
-              width: MediaQuery.of(context).size.width,
-              child: Text('More detail',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black)),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                right: 10,
-                left: 10,
-                bottom: 10,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ImageSlider(),
+              NameDorm(),
+              Divider(),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: MediaQuery.of(context).size.width,
+                child: Text('Facilities',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black)),
               ),
-              width: MediaQuery.of(context).size.width,
-              child: Text(
-                  "ขายสัญญา Rivendell Estrella Condominium ฝั่งกังสดาล ห้อง 33 ตรม. อยู่ได้ 3 ค่าเช่าเดือนละ 8500 บาท, ค่าสัญญา 8500 บาท รวม 17000 บาท เข้าอยู่ได้วันที่ 1 เมษายน 2566 (ตอนออกได้ค่าประกันคืน 8500 นะคะ -สัญญาหมดวันที่ 31 พ.ค. 2566 ต่อได้เรื่อยๆเป็นรายปีค่ะคอนโดอยู่ใกล้แหล่งของกิน ร้านบุฟเฟต์ ร้านสะดวกซื้อ คาเฟ่ และร้านซักผ้าค่ะ",
-                  style: TextStyle(color: Colors.black)),
-            ),
-          ],
+              Facility(
+                facilities: [
+                  "เครื่องทำน้ำอุ่น",
+                  "ลิฟต์",
+                  'แอร์',
+                  'ตู้เย็น',
+                  'ทีวี'
+                ],
+              ),
+              Divider(),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: MediaQuery.of(context).size.width,
+                child: Text('More detail',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black)),
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                  right: 10,
+                  left: 10,
+                  bottom: 10,
+                ),
+                width: MediaQuery.of(context).size.width,
+                child: Text(
+                    "ขายสัญญา Rivendell Estrella Condominium ฝั่งกังสดาล ห้อง 33 ตรม. อยู่ได้ 3 ค่าเช่าเดือนละ 8500 บาท, ค่าสัญญา 8500 บาท รวม 17000 บาท เข้าอยู่ได้วันที่ 1 เมษายน 2566 (ตอนออกได้ค่าประกันคืน 8500 นะคะ -สัญญาหมดวันที่ 31 พ.ค. 2566 ต่อได้เรื่อยๆเป็นรายปีค่ะคอนโดอยู่ใกล้แหล่งของกิน ร้านบุฟเฟต์ ร้านสะดวกซื้อ คาเฟ่ และร้านซักผ้าค่ะ",
+                    style: TextStyle(color: Colors.black)),
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CartBottomNavBar(),
