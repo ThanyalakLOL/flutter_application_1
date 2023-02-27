@@ -31,7 +31,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
           ),
           leading: IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/signup_page');
             },
             icon: const Icon(
               Icons.arrow_back,
