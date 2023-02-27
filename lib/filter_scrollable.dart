@@ -23,54 +23,49 @@ class _FilterSelectedState extends State<FilterSelected> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            primary: Colors.blue, // Button background color
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-            ),
-            elevation: 5, // Elevation of the button
-          ),
-          onPressed: () {},
-          child: Container(
-            height: 35,
-            margin: const EdgeInsets.only(right: 5, bottom: 5),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(18)),
-              color: myMaterialColor,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: const Offset(0, 3), // changes position of shadow
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Container(
-                    // padding: EdgeInsets.only(bottom: 10, right: 5),
-                    child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20, right: 5),
-                  child: Icon(
-                    Icons.format_list_bulleted_rounded,
-                    color: Colors.white,
+        GestureDetector(
+            onTap: () {
+              //
+            },
+            child: Container(
+              height: 35,
+              // alignment: Alignment.center,
+              margin: EdgeInsets.only(right: 5, bottom: 5, left: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(18)),
+                color: myMaterialColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 2,
+                    offset: Offset(0, 3),
                   ),
-                )),
-                const Text(
-                  "Filter",
-                  style: TextStyle(
-                      fontFamily: "Comfortaa",
-                      fontSize: 15,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white),
+                ],
+              ),
+              child: Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.list_outlined,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                    Padding(padding: EdgeInsets.only(right: 5)),
+                    Text(
+                      "Filter",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: "Comfortaa",
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-        ),
+              ),
+            )),
         Expanded(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
