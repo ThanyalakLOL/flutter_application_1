@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app_screens/signup_page.dart';
+import 'package:flutter_application_1/material_color.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -137,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                           hintStyle: TextStyle(fontSize: 16),
                           prefixIcon: Icon(
                             Icons.password_outlined,
-                            color: Colors.deepPurple,
+                            color: myMaterialColor,
                           ),
                           suffixIcon: IconButton(
                             icon: Icon(
@@ -185,20 +186,25 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 50,
               ),
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(10),
-                height: 50,
-                width: 120,
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                  borderRadius: BorderRadius.circular(30),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/');
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(10),
+                  height: 50,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Text("Sign in",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white)),
                 ),
-                child: Text("Sign in",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.normal,
-                        color: Colors.white)),
               ),
               Container(
                 height: 70,

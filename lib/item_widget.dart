@@ -26,101 +26,110 @@ class _ItemWidgetState extends State<ItemWidget> {
       shrinkWrap: true,
       children: [
         for (int i = 0; i < 3; i++)
-          Container(
-            margin: EdgeInsets.only(left: 20, right: 20, bottom: 22),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                        padding: EdgeInsets.all(15),
-                        child: CircleAvatar(
-                            backgroundImage: AssetImage("images/nobita.jpg"))),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Serenity Condo",
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/detail_page');
+            },
+            child: Container(
+              margin: EdgeInsets.only(left: 20, right: 20, bottom: 22),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                          padding: EdgeInsets.all(15),
+                          child: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage("images/nobita.jpg"))),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Serenity Condo",
+                            style: TextStyle(
+                                fontFamily: "Comfortaa",
+                                fontSize: 22,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          Padding(padding: EdgeInsets.only(bottom: 2)),
+                          Text(
+                            "หลังมอ",
+                            style: TextStyle(
+                                fontFamily: "Bai Jamjuree",
+                                color: Colors.black87),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  dorm_image_with_status(),
+                  Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text(
+                          "5000 BATH/MONTH",
                           style: TextStyle(
                               fontFamily: "Comfortaa",
-                              fontSize: 22,
-                              fontWeight: FontWeight.w900),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w900,
+                              color: myMaterialColor),
                         ),
-                        Padding(padding: EdgeInsets.only(bottom: 2)),
-                        Text(
-                          "หลังมอ",
-                          style: TextStyle(
-                              fontFamily: "Bai Jamjuree",
-                              color: Colors.black87),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-                dorm_image_with_status(),
-                Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text(
-                        "5000 BATH/MONTH",
-                        style: TextStyle(
-                            fontFamily: "Comfortaa",
-                            fontSize: 16,
-                            fontWeight: FontWeight.w900,
-                            color: myMaterialColor),
                       ),
-                    ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                isFavoriteList[i] = !isFavoriteList[i];
-                              });
-                            },
-                            icon: Icon(
-                              isFavoriteList[i]
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: isFavoriteList[i] ? Colors.red : null,
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/login_page');
+                                setState(() {
+                                  isFavoriteList[i] = !isFavoriteList[i];
+                                });
+                              },
+                              icon: Icon(
+                                isFavoriteList[i]
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: isFavoriteList[i] ? Colors.red : null,
+                              ),
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                isNotificationOnList[i] =
-                                    !isNotificationOnList[i];
-                              });
-                            },
-                            icon: Icon(
-                              isNotificationOnList[i]
-                                  ? Icons.notifications_active
-                                  : Icons.notifications_none_rounded,
-                              color:
-                                  isNotificationOnList[i] ? Colors.amber : null,
+                            IconButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/login_page');
+                                setState(() {
+                                  isNotificationOnList[i] =
+                                      !isNotificationOnList[i];
+                                });
+                              },
+                              icon: Icon(
+                                isNotificationOnList[i]
+                                    ? Icons.notifications_active
+                                    : Icons.notifications_none_rounded,
+                                color: isNotificationOnList[i]
+                                    ? Colors.amber
+                                    : null,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                )
-              ],
+                          ],
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           )
       ],

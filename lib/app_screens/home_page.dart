@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     });
     switch (i) {
       case 0:
-        Navigator.pushNamed(context, '/');
+        Navigator.pushNamed(context, '/login_page');
         break;
       case 1:
         Navigator.pushNamed(context, '/fav_page');
