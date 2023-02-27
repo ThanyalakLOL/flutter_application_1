@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app_screen/create_acount.dart';
-import 'package:flutter_application_1/app_screen/edit_my_dorm._page.dart';
-import 'package:flutter_application_1/app_screen/my_dorm_to_sell.dart';
-import 'package:flutter_application_1/app_screens/adding_dorm.dart';
-
-import 'package:flutter_application_1/app_screens/detailpage.dart';
-
+import 'package:flutter_application_1/app_screens/adding_page.dart';
 import 'package:flutter_application_1/app_screens/home_page.dart';
-import 'package:flutter_application_1/app_screens/login_page.dart';
-
 import 'package:flutter_application_1/app_screens/profile_edit_page.dart';
 import 'package:flutter_application_1/app_screens/signup_page.dart';
 import 'package:flutter_application_1/app_screens/wishlist_page.dart';
@@ -30,15 +22,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
-        '/adding_page': (context) => const Adding(),
+        '/adding_page': (context) => const AddingPage(),
         '/fav_page': (context) => const WishListDormPage(),
         '/profile_page': (context) => const ProfileEditPage(),
-        '/create_account_page': (context) => const CreateAccountPage(),
-        '/login_page': (context) => LoginPage(),
-        '/signup_page': (context) => SignupPage(),
-        '/detail_page': (context) => DetailPage(),
-        '/edit_my_dorm': (context) => EditMyDormPage(),
-        '/my_dorm_to_sell_page': (context) => MyDormToSell(),
+        '/signup_page': (context) => const SignUpPage(),
       },
       theme: ThemeData(
         iconTheme: IconThemeData(color: Colors.black87),
