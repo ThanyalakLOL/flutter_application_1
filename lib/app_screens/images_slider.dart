@@ -77,7 +77,7 @@ class _ImageSliderState extends State<ImageSlider> {
               child: IconButton(
                 icon: Icon(Icons.arrow_back),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/');
+                  Navigator.pop(context);
                 },
               ))
         ],
