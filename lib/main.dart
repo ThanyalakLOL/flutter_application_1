@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app_screen/adding_page.dart';
-import 'package:flutter_application_1/app_screen/home_page.dart';
-import 'package:flutter_application_1/app_screen/profile_edit_page.dart';
-import 'package:flutter_application_1/app_screen/signup_page.dart';
-import 'package:flutter_application_1/app_screen/wishlist_page.dart';
-import 'package:flutter_application_1/app_screen/edit_varaible/edit_text_page.dart';
+import 'package:flutter_application_1/app_screens/adding_page.dart';
+import 'package:flutter_application_1/app_screens/home_page.dart';
+import 'package:flutter_application_1/app_screens/profile_edit_page.dart';
+import 'package:flutter_application_1/app_screens/signup_page.dart';
+import 'package:flutter_application_1/app_screens/wishlist_page.dart';
+import 'package:flutter_application_1/app_screens/edit_varaible/edit_text_page.dart';
 import 'package:flutter_application_1/material_color.dart';
 
 void main() {
