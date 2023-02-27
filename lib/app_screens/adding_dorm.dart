@@ -193,9 +193,124 @@ class _AddingState extends State<Adding> {
                 ],
               ),
             ),
+            Container(
+              margin: EdgeInsets.all(10),
+              width: width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    child: Text("Select domitory's facilities",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey)),
+                    margin: EdgeInsets.only(bottom: 10),
+                  ),
+                  Facility(
+                    facilities: [
+                      "เครื่องทำน้ำอุ่น",
+                      "ลิฟต์",
+                      'แอร์',
+                      'ตู้เย็น',
+                      'ทีวี'
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class Chipschoice extends StatefulWidget {
+  const Chipschoice({Key? key}) : super(key: key);
+
+  @override
+  State<Chipschoice> createState() => _ChipschoiceState();
+}
+
+class _ChipschoiceState extends State<Chipschoice> {
+  bool isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return Colors.blue;
+      }
+      return Colors.red;
+    }
+
+    return Checkbox(
+      checkColor: Colors.white,
+      fillColor: MaterialStateProperty.resolveWith(getColor),
+      value: isChecked,
+      onChanged: (bool? value) {
+        setState(() {
+          isChecked = value!;
+        });
+      },
+    );
+  }
+}
+
+class Facility extends StatefulWidget {
+  final List<String> facilities;
+
+  const Facility({Key? key, required this.facilities}) : super(key: key);
+
+  @override
+  State<Facility> createState() => _FacilityState();
+}
+
+class _FacilityState extends State<Facility> {
+  @override
+  Widget build(BuildContext context) {
+    int mid = (widget.facilities.length / 2).ceil();
+    List<String> firstHalf = widget.facilities.sublist(0, mid);
+    List<String> secondHalf = widget.facilities.sublist(mid);
+
+    return Container(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Column(
+              children: firstHalf
+                  .map((facility) => buildFacilityRow(facility))
+                  .toList(),
+            ),
+          ),
+          Expanded(
+            child: Column(
+              children: secondHalf
+                  .map((facility) => buildFacilityRow(facility))
+                  .toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildFacilityRow(String facility) {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 10, left: 10),
+          child: Chipschoice(),
+        ),
+        Text(facility),
+      ],
     );
   }
 }
