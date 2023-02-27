@@ -12,6 +12,8 @@ import 'package:flutter_application_1/app_screens/wishlist_page.dart';
 import 'package:flutter_application_1/app_screens/edit_varaible/edit_text_page.dart';
 import 'package:flutter_application_1/material_color.dart';
 
+import 'app_screens/image_upload.dart';
+
 void main() {
   runApp(const MyApp());
 }
