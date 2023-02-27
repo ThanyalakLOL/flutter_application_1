@@ -42,6 +42,10 @@ dependencies:
   image_picker: ^0.8.6+3
   carousel_slider: ^4.2.1
   dropdown_button2: ^1.9.4
+<<<<<<< Updated upstream
+=======
+  side_sheet: ^1.0.4
+>>>>>>> Stashed changes
 
 dev_dependencies:
   flutter_test:
