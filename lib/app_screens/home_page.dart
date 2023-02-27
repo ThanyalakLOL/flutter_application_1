@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_application_1/app_screen/adding_page.dart';
+import 'package:flutter_application_1/app_screens/adding_page.dart';
 import 'package:flutter_application_1/filter_scrollable.dart';
 import 'package:flutter_application_1/material_color.dart';
 import 'package:flutter_application_1/custom_search.dart';
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
             Icon(Icons.holiday_village_rounded),
             Padding(padding: EdgeInsets.only(right: 15)),
             Text(
-              "KKU Dorm",
+              "KKU Doasrm",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontFamily: "Comfortaa",
