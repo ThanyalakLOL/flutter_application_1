@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
             Icon(Icons.holiday_village_rounded),
             Padding(padding: EdgeInsets.only(right: 15)),
             Text(
-              "KKU Doasrm",
+              "KKU Dorm",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontFamily: "Comfortaa",
