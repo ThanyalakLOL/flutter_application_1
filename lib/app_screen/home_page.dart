@@ -80,38 +80,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Container(
                   padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 35,
-                        margin: const EdgeInsets.only(right: 5, bottom: 5),
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(18)),
-                          color: myMaterialColor,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 1,
-                              blurRadius: 2,
-                              offset: const Offset(
-                                  0, 3), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: const Text(
-                          "Filter",
-                          style: TextStyle(
-                              fontFamily: "Comfortaa",
-                              fontSize: 15,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.white),
-                        ),
-                      ),
-                      const Expanded(child: FilterSelected()),
-                    ],
-                  )),
+                  child: FilterSelected()),
               SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.only(left: 20, right: 20),

@@ -24,9 +24,14 @@ class _ProfileRowState extends State<ProfileRow> {
       children: [
         Expanded(
           child: Container(
-              padding: EdgeInsets.all(10),
-              alignment: Alignment.centerLeft,
-              child: Column()),
+            padding: EdgeInsets.all(10),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              widget.topic,
+              style: TextStyle(
+                  fontFamily: "Comfortaa", fontSize: 15, color: Colors.black),
+            ),
+          ),
         ),
         Row(
           children: [
