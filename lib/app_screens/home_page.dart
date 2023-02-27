@@ -34,10 +34,13 @@ class _HomePageState extends State<HomePage> {
         Navigator.pushNamed(context, '/fav_page');
         break;
       case 2:
-        Navigator.pushNamed(context, '/signup_page');
-
+        Navigator.pushNamed(context, '/my_dorm_to_sell_page');
         break;
       case 3:
+        Navigator.pushNamed(context, '/profile_page');
+
+        break;
+      case 4:
         Navigator.pushNamed(context, '/profile_page');
 
         break;
@@ -151,6 +154,14 @@ class _HomePageState extends State<HomePage> {
           /// favorite
           DotNavigationBarItem(
               icon: const Icon(Icons.favorite),
+              selectedColor: Colors.white,
+              unselectedColor: Colors.white),
+
+          /// myDorm
+          DotNavigationBarItem(
+              icon: const Icon(
+                Icons.list_alt_outlined,
+              ),
               selectedColor: Colors.white,
               unselectedColor: Colors.white),
 

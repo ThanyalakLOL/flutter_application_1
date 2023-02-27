@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app_screens/adding_dorm.dart';
-import 'package:flutter_application_1/app_screens/create_acoount.dart';
+import 'package:flutter_application_1/app_screens/create_account.dart';
 import 'package:flutter_application_1/app_screens/detailpage.dart';
+import 'package:flutter_application_1/app_screens/edit_my_dorm._page.dart';
 import 'package:flutter_application_1/app_screens/home_page.dart';
 import 'package:flutter_application_1/app_screens/login_page.dart';
+import 'package:flutter_application_1/app_screens/my_dorm_to_sell.dart';
 import 'package:flutter_application_1/app_screens/profile_edit_page.dart';
 import 'package:flutter_application_1/app_screens/signup_page.dart';
 import 'package:flutter_application_1/app_screens/wishlist_page.dart';
@@ -32,6 +34,8 @@ class MyApp extends StatelessWidget {
         '/login_page': (context) => LoginPage(),
         '/signup_page': (context) => SignupPage(),
         '/detail_page': (context) => DetailPage(),
+        '/edit_my_dorm': (context) => EditMyDormPage(),
+        '/my_dorm_to_sell_page': (context) => MyDormToSell(),
       },
       theme: ThemeData(
         iconTheme: IconThemeData(color: Colors.black87),

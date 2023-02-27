@@ -224,20 +224,25 @@ class _SignupPageState extends State<SignupPage> {
               SizedBox(
                 height: 20,
               ),
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(10),
-                height: 50,
-                width: 120,
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                  borderRadius: BorderRadius.circular(30),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/create_account_page');
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(10),
+                  height: 50,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Text("Sign Up",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white)),
                 ),
-                child: Text("Sign Up",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.normal,
-                        color: Colors.white)),
               ),
               Row(
                 children: [
