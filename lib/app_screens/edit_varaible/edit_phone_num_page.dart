@@ -4,6 +4,11 @@ import 'package:flutter_application_1/home_floating_button.dart';
 import 'package:flutter_application_1/material_color.dart';
 
 class EditPhoneNumPage extends StatefulWidget {
+  const EditPhoneNumPage({
+    Key? key,
+    required this.topic,
+  }) : super(key: key);
+  final String topic;
   @override
   State<EditPhoneNumPage> createState() => _EditPhoneNumPageState();
 }
@@ -37,7 +42,7 @@ class _EditPhoneNumPageState extends State<EditPhoneNumPage> {
               ),
             ),
             Text(
-              "Topic",
+              widget.topic,
               style: TextStyle(
                   fontFamily: "Comfortaa",
                   fontSize: 22,
@@ -83,7 +88,7 @@ class _EditPhoneNumPageState extends State<EditPhoneNumPage> {
             decoration: InputDecoration(
               // labelText: 'Enter text',
 
-              hintText: 'Enter topic',
+              hintText: 'Enter ' + widget.topic,
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.indigo),
               ),
