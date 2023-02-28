@@ -6,7 +6,8 @@ import 'package:flutter_application_1/app_screens/edit_varaible/edit_text_page.d
 
 class ProfileRow extends StatefulWidget {
   ProfileRow(
-      {required this.topic,
+      {super.key,
+      required this.topic,
       required this.info,
       required this.legthInfo,
       required this.type});
@@ -54,6 +55,7 @@ class _ProfileRowState extends State<ProfileRow> {
                           MaterialPageRoute(
                               builder: (context) => EdittextPage(
                                     length: widget.legthInfo,
+                                    topic: widget.topic,
                                   )),
                         )
                       : Navigator.push(

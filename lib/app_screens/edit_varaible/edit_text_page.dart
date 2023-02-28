@@ -5,8 +5,13 @@ import 'package:flutter_application_1/home_floating_button.dart';
 import 'package:flutter_application_1/material_color.dart';
 
 class EdittextPage extends StatefulWidget {
-  const EdittextPage({required this.length});
+  const EdittextPage({
+    Key? key,
+    required this.length,
+    required this.topic,
+  }) : super(key: key);
   final int length;
+  final String topic;
 
   @override
   State<EdittextPage> createState() => _EdittextPageState();
@@ -41,7 +46,7 @@ class _EdittextPageState extends State<EdittextPage> {
               ),
             ),
             Text(
-              "Topic",
+              widget.topic,
               style: TextStyle(
                   fontFamily: "Comfortaa",
                   fontSize: 22,
@@ -80,7 +85,7 @@ class _EdittextPageState extends State<EdittextPage> {
             },
             decoration: InputDecoration(
               // labelText: 'Enter text',
-              hintText: 'Enter topic',
+              hintText: 'Enter topic' + widget.topic,
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.indigo),
               ),
