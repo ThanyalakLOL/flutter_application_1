@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_application_1/home_floating_button.dart';
 import 'package:flutter_application_1/profile_row.dart';
 import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class ProfileEditPage extends StatefulWidget {
   const ProfileEditPage({Key? key}) : super(key: key);
@@ -13,6 +14,65 @@ class ProfileEditPage extends StatefulWidget {
 }
 
 class _ProfileEditPageState extends State<ProfileEditPage> {
+  XFile? image;
+
+  final ImagePicker picker = ImagePicker();
+
+  //we can upload image from camera or from gallery based on parameter
+  Future getImage(ImageSource media) async {
+    var img = await picker.pickImage(source: media);
+
+    setState(() {
+      image = img;
+    });
+  }
+
+  //show popup dialog
+  void myAlert() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            title: Text('Please choose media to select'),
+            content: Container(
+              height: MediaQuery.of(context).size.height / 6,
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    //if user click this button, user can upload image from gallery
+                    onPressed: () {
+                      Navigator.pop(context);
+                      getImage(ImageSource.gallery);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.image),
+                        Text('From Gallery'),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    //if user click this button. user can upload image from camera
+                    onPressed: () {
+                      Navigator.pop(context);
+                      getImage(ImageSource.camera);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.camera),
+                        Text('From Camera'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,10 +124,17 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage("images/nobita.jpg"),
-                    radius: 100,
-                  ),
+                  image != null
+                      ? CircleAvatar(
+                          radius: 100,
+                          backgroundImage: FileImage(
+                            File(image!.path),
+                          ),
+                        )
+                      : CircleAvatar(
+                          backgroundImage: AssetImage("images/nobita.jpg"),
+                          radius: 100,
+                        ),
                   Positioned(
                     right: -10,
                     bottom: 2,
@@ -82,7 +149,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                       ),
                       child: IconButton(
                         onPressed: () {
-                          //pick image from device
+                          myAlert();
                         },
                         icon: Icon(
                           Icons.settings,

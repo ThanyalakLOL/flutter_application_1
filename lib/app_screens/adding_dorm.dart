@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/material_color.dart';
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Adding extends StatefulWidget {
   const Adding({Key? key}) : super(key: key);
@@ -28,7 +31,6 @@ class _AddingState extends State<Adding> {
   final List<String> type = [
     'รายวัน',
     'รายเดือน',
-    'รายปี',
   ];
   String? selectedType;
 
@@ -56,13 +58,86 @@ class _AddingState extends State<Adding> {
     super.dispose();
   }
 
+  List<XFile> images = [];
+
+  final ImagePicker picker = ImagePicker();
+
+  //we can upload image from camera or from gallery based on parameter
+  Future getImage(ImageSource media) async {
+    var img = await picker.pickImage(source: media);
+
+    setState(() {
+      if (img != null) {
+        images.add(img);
+      }
+    });
+  }
+
+  void myAlert() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            title: Text('Please choose media to select'),
+            content: Container(
+              height: MediaQuery.of(context).size.height / 6,
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    //if user click this button, user can upload image from gallery
+                    onPressed: () {
+                      Navigator.pop(context);
+                      getImage(ImageSource.gallery);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.image),
+                        Text('From Gallery'),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      getImage(ImageSource.camera);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.camera),
+                        Text('From Camera'),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      // backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Adding"),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/');
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
+        backgroundColor: Colors.grey[200],
+        title: const Text(
+          "Add your contact",
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -189,33 +264,76 @@ class _AddingState extends State<Adding> {
                               color: Colors.grey)),
                       margin: EdgeInsets.only(bottom: 10),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      width: width,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      // color: Colors.cyanAccent,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            child: Image.asset("images/iconimage.png"),
-                            height: 80,
-                          ),
-                          Expanded(
-                              child: Container(
-                            child: Center(
-                              child: Text(
-                                "Add pictures",
+                    if (images != null && images!.isNotEmpty)
+                      SizedBox(
+                        height: 300,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: images!.length,
+                          itemBuilder: (context, index) {
+                            final image = images![index];
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.file(
+                                  File(image.path),
+                                  width: 300,
+                                  height: 300,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
+                            );
+                          },
+                        ),
+                      ),
+                    if (images == null || images!.isEmpty)
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        width: width,
+                        decoration: BoxDecoration(
+                          // color: Colors.white,
+                          border: Border.all(
+                            color: Colors.grey,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        // color: Colors.cyanAccent,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              child: Image.asset("images/iconimage.png"),
+                              height: 80,
                             ),
-                          )),
-                        ],
+                            Expanded(
+                                child: Container(
+                              child: Center(
+                                child: Text(
+                                  "Add pictures",
+                                ),
+                              ),
+                            )),
+                          ],
+                        ),
+                      ),
+                    GestureDetector(
+                      onTap: myAlert,
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(top: 10),
+                        height: 50,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: myMaterialColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Text("Upload",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.white)),
                       ),
                     ),
                   ],
@@ -263,30 +381,6 @@ class _AddingState extends State<Adding> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      child: Text("Type",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey)),
-                      margin: EdgeInsets.only(bottom: 10),
-                    ),
-                    Container(
-                      width: width,
-                      child: CustomDropdownButton2(
-                        hint: 'Select Type',
-                        dropdownItems: type,
-                        value: selectedType,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedType = value;
-                          });
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
                     Container(
                       child: Text("Zone",
                           style: TextStyle(
@@ -369,7 +463,7 @@ class _AddingState extends State<Adding> {
                         Container(
                           width: width * 0.6,
                           child: CustomDropdownButton2(
-                            hint: 'Select Zone',
+                            hint: 'หน่วย',
                             dropdownItems: water_unit,
                             value: selectedWater_unit,
                             onChanged: (value) {
@@ -380,6 +474,131 @@ class _AddingState extends State<Adding> {
                           ),
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Divider(),
+                    Container(
+                      child: Text("ประเภทและราคาห้องพัก",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey)),
+                      margin: EdgeInsets.only(bottom: 10),
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(right: 10),
+                          width: width * 0.4,
+                          child: CustomDropdownButton2(
+                            hint: 'ประเภทห้องพัก',
+                            dropdownItems: type,
+                            value: selectedType,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedType = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                              height: 40,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  labelText: 'ค่าห้อง',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(14.0),
+                                    borderSide: BorderSide(color: Colors.grey),
+                                  ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 8.0, horizontal: 12.0),
+                                  suffixText: (selectedType == 'รายวัน')
+                                      ? 'บาท/วัน'
+                                      : ((selectedType == 'รายเดือน')
+                                          ? 'บาท/เดือน'
+                                          : ''),
+                                  suffixStyle: TextStyle(color: Colors.grey),
+                                ),
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  FilteringTextInputFormatter.digitsOnly
+                                ],
+                              )),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Divider(),
+                    Container(
+                      child: Text("รายละเอียดเพิ่มเติม",
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey)),
+                      margin: EdgeInsets.only(bottom: 10),
+                    ),
+                    Container(
+                      height: 150,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14.0),
+                        border: Border.all(color: Colors.grey),
+                      ),
+                      child: SingleChildScrollView(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'กรอกรายละเอียด',
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 12.0),
+                            suffixStyle: TextStyle(color: Colors.grey),
+// Adjust the font size of the text field
+                            labelStyle: TextStyle(fontSize: 18.0),
+// Adjust the font size of the hint text
+                            hintStyle: TextStyle(fontSize: 16.0),
+                          ),
+                          keyboardType: TextInputType.text,
+// Remove the digitsOnly formatter to accept all strings
+                          inputFormatters: <TextInputFormatter>[],
+                          maxLines: null,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: width,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                              child: Text("Cancel",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.grey))),
+                          Container(
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.all(10),
+                            height: 50,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              color: myMaterialColor,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text("Publish",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white)),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
