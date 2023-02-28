@@ -5,11 +5,13 @@ import 'package:flutter_application_1/app_screens/edit_varaible/edit_phone_num_p
 import 'package:flutter_application_1/app_screens/edit_varaible/edit_text_page.dart';
 
 class ProfileRow extends StatefulWidget {
-  ProfileRow(
-      {required this.topic,
-      required this.info,
-      required this.legthInfo,
-      required this.type});
+  ProfileRow({
+    super.key,
+    required this.topic,
+    required this.info,
+    required this.legthInfo,
+    required this.type,
+  });
   final String topic, info, type;
   final int legthInfo;
 
@@ -54,12 +56,15 @@ class _ProfileRowState extends State<ProfileRow> {
                           MaterialPageRoute(
                               builder: (context) => EdittextPage(
                                     length: widget.legthInfo,
+                                    topic: widget.topic,
                                   )),
                         )
                       : Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => EditPhoneNumPage()),
+                              builder: (context) => EditPhoneNumPage(
+                                    topic: widget.topic,
+                                  )),
                         );
                 },
                 icon: Icon(

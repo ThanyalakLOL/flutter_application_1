@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_application_1/app_screens/edit_varaible/edit_text_page.dart';
 import 'package:flutter_application_1/home_floating_button.dart';
 import 'package:flutter_application_1/profile_row.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class ProfileEditPage extends StatefulWidget {
-  const ProfileEditPage({Key? key}) : super(key: key);
+  const ProfileEditPage({Key? key, required this.newInfo}) : super(key: key);
+  final String newInfo;
 
   @override
   _ProfileEditPageState createState() => _ProfileEditPageState();
@@ -76,7 +79,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: HomeFloatingButton(),
+      // floatingActionButton: HomeFloatingButton(),
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         leading: IconButton(

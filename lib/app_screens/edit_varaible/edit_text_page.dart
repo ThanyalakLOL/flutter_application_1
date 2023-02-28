@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_application_1/app_screens/edit_varaible/edit_phone_num_page.dart';
 import 'package:flutter_application_1/home_floating_button.dart';
 import 'package:flutter_application_1/material_color.dart';
+import 'package:flutter_application_1/profile_row.dart';
 
 class EdittextPage extends StatefulWidget {
-  const EdittextPage({required this.length});
+  const EdittextPage({
+    super.key,
+    required this.length,
+    required this.topic,
+  });
   final int length;
+  final String topic;
 
   @override
   State<EdittextPage> createState() => _EdittextPageState();
 }
 
 class _EdittextPageState extends State<EdittextPage> {
-  String _topic = '';
+  String newInfo = '';
   @override
   Widget build(BuildContext context) {
     Color? saveButtonColor =
-        _topic.isNotEmpty ? myMaterialColor : Colors.grey[700];
+        newInfo.isNotEmpty ? myMaterialColor : Colors.grey[700];
     return Scaffold(
       floatingActionButton: HomeFloatingButton(),
       backgroundColor: Colors.grey[100],
@@ -29,7 +36,7 @@ class _EdittextPageState extends State<EdittextPage> {
           children: [
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/profile_page');
+                Navigator.pushNamed(context, '/');
               },
               child: Text(
                 'Cancel',
@@ -41,7 +48,7 @@ class _EdittextPageState extends State<EdittextPage> {
               ),
             ),
             Text(
-              "Topic",
+              widget.topic,
               style: TextStyle(
                   fontFamily: "Comfortaa",
                   fontSize: 22,
@@ -49,9 +56,19 @@ class _EdittextPageState extends State<EdittextPage> {
                   color: Colors.black),
             ),
             TextButton(
-              onPressed: _topic.isNotEmpty
+              onPressed: newInfo.isNotEmpty
                   ? () {
-                      Navigator.pushNamed(context, '/profile_page');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfileRow(
+                            topic: widget.topic,
+                            info: newInfo,
+                            type: 'text',
+                            legthInfo: widget.length,
+                          ),
+                        ),
+                      );
                     }
                   : null,
               child: Text(
@@ -74,13 +91,13 @@ class _EdittextPageState extends State<EdittextPage> {
             maxLength: widget.length,
             onChanged: (value) {
               setState(() {
-                _topic =
+                newInfo =
                     value; // update the _topic variable when the user types in the TextField
               });
             },
             decoration: InputDecoration(
               // labelText: 'Enter text',
-              hintText: 'Enter topic',
+              hintText: 'Enter ' + widget.topic,
               focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.indigo),
               ),

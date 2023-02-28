@@ -11,6 +11,7 @@ import 'package:flutter_application_1/app_screens/signup_page.dart';
 import 'package:flutter_application_1/app_screens/wishlist_page.dart';
 import 'package:flutter_application_1/app_screens/edit_varaible/edit_text_page.dart';
 import 'package:flutter_application_1/material_color.dart';
+import 'package:flutter_application_1/profile_row.dart';
 
 import 'app_screens/image_upload.dart';
 
@@ -31,7 +32,9 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomePage(),
         '/adding_page': (context) => const Adding(),
         '/fav_page': (context) => const WishListDormPage(),
-        '/profile_page': (context) => const ProfileEditPage(),
+        '/profile_page': (context) => const ProfileEditPage(
+              newInfo: '',
+            ),
         '/create_account_page': (context) => const CreateAccountPage(),
         '/login_page': (context) => LoginPage(),
         '/signup_page': (context) => SignupPage(),
