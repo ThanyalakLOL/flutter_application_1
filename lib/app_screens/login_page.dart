@@ -52,22 +52,27 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Container(
                       margin: EdgeInsets.all(10),
-                      child: Text("Welcome Back!",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black)),
+                      child: Text(
+                        "Welcome Back!",
+                        style: TextStyle(
+                            fontFamily: "Comfortaa",
+                            fontSize: 30,
+                            fontWeight: FontWeight.w900),
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
                             margin: EdgeInsets.only(left: 10),
-                            child: Text("Sign into your account",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.grey)))
+                            child: Text(
+                              "Sign into your account",
+                              style: TextStyle(
+                                  fontFamily: "Comfortaa",
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.normal),
+                            ))
                       ],
                     ),
                     SizedBox(
@@ -89,10 +94,13 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: "Email",
-                          hintStyle: TextStyle(fontSize: 16),
+                          hintStyle: TextStyle(
+                              fontFamily: "Comfortaa",
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal),
                           prefixIcon: Icon(
                             Icons.email_outlined,
-                            color: Colors.deepPurple,
+                            color: myMaterialColor,
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
@@ -135,7 +143,10 @@ class _LoginPageState extends State<LoginPage> {
 
                         decoration: InputDecoration(
                           hintText: "Password",
-                          hintStyle: TextStyle(fontSize: 16),
+                          hintStyle: TextStyle(
+                              fontFamily: "Comfortaa",
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal),
                           prefixIcon: Icon(
                             Icons.password_outlined,
                             color: myMaterialColor,
@@ -145,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                               _showPassword
                                   ? Icons.visibility_outlined
                                   : Icons.visibility_off_outlined,
-                              color: Colors.deepPurple,
+                              color: myMaterialColor,
                             ),
                             onPressed: _togglePasswordVisibility,
                           ),
@@ -173,11 +184,14 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Container(
                             margin: EdgeInsets.all(10),
-                            child: Text("Forgot your password",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.grey)))
+                            child: Text(
+                              "Forgot your password",
+                              style: TextStyle(
+                                  fontFamily: "Comfortaa",
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.normal),
+                            ))
                       ],
                     ),
                   ],
@@ -196,14 +210,17 @@ class _LoginPageState extends State<LoginPage> {
                   height: 50,
                   width: 120,
                   decoration: BoxDecoration(
-                    color: Colors.deepPurple,
+                    color: myMaterialColor,
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: Text("Sign in",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.white)),
+                  child: Text(
+                    "Sign in",
+                    style: TextStyle(
+                        fontFamily: "Comfortaa",
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
               Container(
@@ -213,11 +230,14 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("Don't have an account? ",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.grey)),
+                    Text(
+                      "Don't have an account? ",
+                      style: TextStyle(
+                          fontFamily: "Comfortaa",
+                          fontSize: 16,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.normal),
+                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -228,10 +248,9 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         "Create",
                         style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black,
-                        ),
+                            fontFamily: "Comfortaa",
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal),
                       ),
                     ),
                   ],

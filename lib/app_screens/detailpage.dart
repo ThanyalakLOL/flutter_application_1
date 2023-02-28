@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/material_color.dart';
 import 'images_slider.dart';
 
 class NameDorm extends StatefulWidget {
@@ -105,7 +106,7 @@ class _NameDormState extends State<NameDorm> {
                 margin: EdgeInsets.all(10),
                 child: Icon(
                   Icons.phone,
-                  color: Colors.deepPurple,
+                  color: myMaterialColor,
                   size: 30.0,
                 ),
               ),
@@ -113,7 +114,7 @@ class _NameDormState extends State<NameDorm> {
                 margin: EdgeInsets.all(10),
                 child: Icon(
                   Icons.message,
-                  color: Colors.deepPurple,
+                  color: myMaterialColor,
                   size: 30.0,
                 ),
               ),
@@ -171,7 +172,7 @@ class _FacilityState extends State<Facility> {
           padding: const EdgeInsets.only(right: 10, left: 10),
           child: Icon(
             Icons.check,
-            color: Colors.deepPurple,
+            color: myMaterialColor,
             size: 30.0,
           ),
         ),
@@ -216,7 +217,49 @@ class _DetailPageState extends State<DetailPage> {
                   "ลิฟต์",
                   'แอร์',
                   'ตู้เย็น',
-                  'ทีวี'
+                  'ทีวี',
+                  'โต๊ะทำงาน',
+                  'เตียงเดียว',
+                  'wifi',
+                  'ที่จอดรถยนต์',
+                  'เครื่องซักผ้า',
+                  'รปภ.',
+                  'ตู้เสื้อผ้า',
+                ],
+              ),
+              Divider(),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: MediaQuery.of(context).size.width,
+                child: Text('Cost of utilities',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black)),
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        'ค่าน้ำ : 20 บาท/หน่วย',
+                        style: TextStyle(
+                            fontFamily: "Bai Jamjuree", color: Colors.black87),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        'ค่าไฟ : 8 บาท/หน่วย',
+                        style: TextStyle(
+                            fontFamily: "Bai Jamjuree", color: Colors.black87),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Divider(),
@@ -237,8 +280,10 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                    "ขายสัญญา Rivendell Estrella Condominium ฝั่งกังสดาล ห้อง 33 ตรม. อยู่ได้ 3 ค่าเช่าเดือนละ 8500 บาท, ค่าสัญญา 8500 บาท รวม 17000 บาท เข้าอยู่ได้วันที่ 1 เมษายน 2566 (ตอนออกได้ค่าประกันคืน 8500 นะคะ -สัญญาหมดวันที่ 31 พ.ค. 2566 ต่อได้เรื่อยๆเป็นรายปีค่ะคอนโดอยู่ใกล้แหล่งของกิน ร้านบุฟเฟต์ ร้านสะดวกซื้อ คาเฟ่ และร้านซักผ้าค่ะ",
-                    style: TextStyle(color: Colors.black)),
+                  "ขายสัญญา Rivendell Estrella Condominium ฝั่งกังสดาล ห้อง 33 ตรม. อยู่ได้ 3 ค่าเช่าเดือนละ 8500 บาท, ค่าสัญญา 8500 บาท รวม 17000 บาท เข้าอยู่ได้วันที่ 1 เมษายน 2566 (ตอนออกได้ค่าประกันคืน 8500 นะคะ -สัญญาหมดวันที่ 31 พ.ค. 2566 ต่อได้เรื่อยๆเป็นรายปีค่ะคอนโดอยู่ใกล้แหล่งของกิน ร้านบุฟเฟต์ ร้านสะดวกซื้อ คาเฟ่ และร้านซักผ้าค่ะ",
+                  style: TextStyle(
+                      fontFamily: "Bai Jamjuree", color: Colors.black87),
+                ),
               ),
             ],
           ),
@@ -287,7 +332,7 @@ class CartBottomNavBar extends StatelessWidget {
               height: 50,
               width: 120,
               decoration: BoxDecoration(
-                color: Colors.deepPurple,
+                color: myMaterialColor,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text("Available",

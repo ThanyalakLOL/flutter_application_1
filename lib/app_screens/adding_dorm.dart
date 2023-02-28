@@ -7,6 +7,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'home_page.dart';
+
 class Adding extends StatefulWidget {
   const Adding({Key? key}) : super(key: key);
 
@@ -16,14 +18,14 @@ class Adding extends StatefulWidget {
 
 class _AddingState extends State<Adding> {
   final List<String> items = [
-    'A_Item1',
-    'A_Item2',
-    'A_Item3',
-    'A_Item4',
-    'B_Item1',
-    'B_Item2',
-    'B_Item3',
-    'B_Item4',
+    'AP Boulevard',
+    'ธนาทิป อพาร์ทเมนต์',
+    'สุพรีมเพลส',
+    'บ้านน้ำทิพย์',
+    'ธนาภาอพาร์ทเมนท์',
+    'หอพักนานาชาติอังกาบ',
+    'สิริสมัยอพาร์ทเม้นต์',
+    'The favorite',
   ];
 
   String? selectedValue;
@@ -117,6 +119,12 @@ class _AddingState extends State<Adding> {
         });
   }
 
+  void removeImage(XFile image) {
+    setState(() {
+      images.remove(image);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -136,7 +144,11 @@ class _AddingState extends State<Adding> {
         backgroundColor: Colors.grey[200],
         title: const Text(
           "Add your contact",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(
+              fontFamily: "Comfortaa",
+              fontSize: 22,
+              fontWeight: FontWeight.w900,
+              color: Colors.black),
         ),
       ),
       body: SafeArea(
@@ -150,11 +162,14 @@ class _AddingState extends State<Adding> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      child: Text("Dormitory name",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey)),
+                      child: Text(
+                        "Dormitory name",
+                        style: TextStyle(
+                            fontFamily: "Comfortaa",
+                            fontSize: 18,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w900),
+                      ),
                       margin: EdgeInsets.only(bottom: 10),
                     ),
                     Container(
@@ -175,9 +190,9 @@ class _AddingState extends State<Adding> {
                               child: Text(
                                 'Select your dormitory',
                                 style: TextStyle(
-                                  fontSize: 14,
-                                  color: Theme.of(context).hintColor,
-                                ),
+                                    fontFamily: "Comfortaa",
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w900),
                               ),
                             ),
                             items: items
@@ -189,6 +204,10 @@ class _AddingState extends State<Adding> {
                                           item,
                                           style: const TextStyle(
                                             fontSize: 14,
+                                            fontFamily: "Comfortaa", //
+                                            // <-- Add font family here
+                                            fontWeight: FontWeight
+                                                .bold, // <-- Add font weight here
                                           ),
                                         ),
                                       ),
@@ -225,7 +244,10 @@ class _AddingState extends State<Adding> {
                                     vertical: 8,
                                   ),
                                   hintText: 'Search for an item...',
-                                  hintStyle: const TextStyle(fontSize: 12),
+                                  hintStyle: const TextStyle(
+                                      fontFamily: "Comfortaa",
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w900),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   ),
@@ -247,6 +269,33 @@ class _AddingState extends State<Adding> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      child: Text(
+                        "Zone",
+                        style: TextStyle(
+                            fontFamily: "Comfortaa",
+                            fontSize: 15,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w900),
+                      ),
+                      margin: EdgeInsets.only(bottom: 10),
+                    ),
+                    Container(
+                      width: width,
+                      child: CustomDropdownButton2(
+                        hint: 'Select Zone',
+                        dropdownItems: zone,
+                        value: selectedZone,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedZone = value;
+                          });
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -257,33 +306,64 @@ class _AddingState extends State<Adding> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      child: Text("Insert Picture",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey)),
+                      child: Text(
+                        "Insert picture",
+                        style: TextStyle(
+                            fontFamily: "Comfortaa",
+                            fontSize: 18,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w900),
+                      ),
                       margin: EdgeInsets.only(bottom: 10),
                     ),
                     if (images != null && images!.isNotEmpty)
-                      SizedBox(
-                        height: 300,
+                      Container(
+                        height: 200,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: images!.length,
                           itemBuilder: (context, index) {
                             final image = images![index];
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Image.file(
-                                  File(image.path),
-                                  width: 300,
-                                  height: 300,
-                                  fit: BoxFit.cover,
+                            return Stack(
+                              children: <Widget>[
+                                Container(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Image.file(
+                                      File(image.path),
+                                      width: 200,
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  padding: EdgeInsets.all(10),
                                 ),
-                              ),
+                                Positioned(
+                                    right: -9,
+                                    top: -9,
+                                    child: IconButton(
+                                        icon: Icon(
+                                          Icons.cancel,
+                                          color: Colors.red.withOpacity(1),
+                                          size: 25,
+                                        ),
+                                        onPressed: () => setState(() {
+                                              images.removeAt(index);
+                                            })))
+                              ],
                             );
+                            // return Padding(
+                            //   padding: const EdgeInsets.all(8.0),
+                            //   child: ClipRRect(
+                            //     borderRadius: BorderRadius.circular(8),
+                            //     child: Image.file(
+                            //       File(image.path),
+                            //       width: 300,
+                            //       height: 300,
+                            //       fit: BoxFit.cover,
+                            //     ),
+                            //   ),
+                            // );
                           },
                         ),
                       ),
@@ -312,6 +392,11 @@ class _AddingState extends State<Adding> {
                               child: Center(
                                 child: Text(
                                   "Add pictures",
+                                  style: TextStyle(
+                                      fontFamily: "Comfortaa",
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.w900),
                                 ),
                               ),
                             )),
@@ -329,11 +414,14 @@ class _AddingState extends State<Adding> {
                           color: myMaterialColor,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Text("Upload",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.white)),
+                        child: Text(
+                          "Upload",
+                          style: TextStyle(
+                              fontFamily: "Comfortaa",
+                              fontSize: 15,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900),
+                        ),
                       ),
                     ),
                   ],
@@ -346,11 +434,14 @@ class _AddingState extends State<Adding> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      child: Text("Select domitory's facilities",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey)),
+                      child: Text(
+                        "Select domitory's facilities",
+                        style: TextStyle(
+                            fontFamily: "Comfortaa",
+                            fontSize: 18,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w900),
+                      ),
                       margin: EdgeInsets.only(bottom: 10),
                     ),
                     Facility(
@@ -360,16 +451,13 @@ class _AddingState extends State<Adding> {
                         'แอร์',
                         'ตู้เย็น',
                         'ทีวี',
-                        "เครื่องทำน้ำอุ่น",
-                        "ลิฟต์",
-                        'แอร์',
-                        'ตู้เย็น',
-                        'ทีวี',
-                        "เครื่องทำน้ำอุ่น",
-                        "ลิฟต์",
-                        'แอร์',
-                        'ตู้เย็น',
-                        'ทีวี',
+                        'โต๊ะทำงาน',
+                        'เตียงเดียว',
+                        'wifi',
+                        'ที่จอดรถยนต์',
+                        'เครื่องซักผ้า',
+                        'รปภ.',
+                        'ตู้เสื้อผ้า',
                       ],
                     ),
                   ],
@@ -381,37 +469,16 @@ class _AddingState extends State<Adding> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      child: Text("Zone",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey)),
-                      margin: EdgeInsets.only(bottom: 10),
-                    ),
-                    Container(
-                      width: width,
-                      child: CustomDropdownButton2(
-                        hint: 'Select Zone',
-                        dropdownItems: zone,
-                        value: selectedZone,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedZone = value;
-                          });
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
                     Divider(),
                     Container(
-                      child: Text("ค่าน้ำ/ค่าไฟ",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey)),
+                      child: Text(
+                        "Cost of utilities",
+                        style: TextStyle(
+                            fontFamily: "Comfortaa",
+                            fontSize: 18,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w900),
+                      ),
                       margin: EdgeInsets.only(bottom: 10),
                     ),
                     Container(
@@ -480,11 +547,14 @@ class _AddingState extends State<Adding> {
                     ),
                     Divider(),
                     Container(
-                      child: Text("ประเภทและราคาห้องพัก",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey)),
+                      child: Text(
+                        "Room type and price",
+                        style: TextStyle(
+                            fontFamily: "Comfortaa",
+                            fontSize: 18,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w900),
+                      ),
                       margin: EdgeInsets.only(bottom: 10),
                     ),
                     Row(
@@ -535,11 +605,14 @@ class _AddingState extends State<Adding> {
                     ),
                     Divider(),
                     Container(
-                      child: Text("รายละเอียดเพิ่มเติม",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey)),
+                      child: Text(
+                        "More detail",
+                        style: TextStyle(
+                            fontFamily: "Comfortaa",
+                            fontSize: 18,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w900),
+                      ),
                       margin: EdgeInsets.only(bottom: 10),
                     ),
                     Container(
@@ -577,25 +650,48 @@ class _AddingState extends State<Adding> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           GestureDetector(
-                              child: Text("Cancel",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.grey))),
-                          Container(
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.all(10),
-                            height: 50,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              color: myMaterialColor,
-                              borderRadius: BorderRadius.circular(10),
+                            child: Text(
+                              "Cancel",
+                              style: TextStyle(
+                                  fontFamily: "Comfortaa",
+                                  fontSize: 18,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w900),
                             ),
-                            child: Text("Publish",
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()),
+                              );
+                            },
+                          ),
+                          GestureDetector(
+                            child: Container(
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.all(10),
+                              height: 50,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                color: myMaterialColor,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Text(
+                                "Publish",
                                 style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.white)),
+                                    fontFamily: "Comfortaa",
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w900),
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()),
+                              );
+                            },
                           ),
                         ],
                       ),
@@ -693,7 +789,11 @@ class _FacilityState extends State<Facility> {
         Center(
           child: Chipschoice(),
         ),
-        Text(facility),
+        Text(
+          facility,
+          style: TextStyle(
+              fontFamily: "Bai Jamjuree", color: Colors.black87, fontSize: 15),
+        ),
       ],
     );
   }

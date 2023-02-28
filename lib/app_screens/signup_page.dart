@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/material_color.dart';
 
 import 'login_page.dart';
 
@@ -59,11 +60,13 @@ class _SignupPageState extends State<SignupPage> {
                   children: [
                     Container(
                       margin: EdgeInsets.only(left: 10, bottom: 10),
-                      child: Text("Sign Up",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black)),
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            fontFamily: "Comfortaa",
+                            fontSize: 30,
+                            fontWeight: FontWeight.w900),
+                      ),
                     ),
                     SizedBox(
                       height: 10,
@@ -84,10 +87,13 @@ class _SignupPageState extends State<SignupPage> {
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: "Email",
-                          hintStyle: TextStyle(fontSize: 16),
+                          hintStyle: TextStyle(
+                              fontFamily: "Comfortaa",
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal),
                           prefixIcon: Icon(
                             Icons.email_outlined,
-                            color: Colors.deepPurple,
+                            color: myMaterialColor,
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
@@ -130,17 +136,20 @@ class _SignupPageState extends State<SignupPage> {
 
                         decoration: InputDecoration(
                           hintText: "Password",
-                          hintStyle: TextStyle(fontSize: 16),
+                          hintStyle: TextStyle(
+                              fontFamily: "Comfortaa",
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal),
                           prefixIcon: Icon(
                             Icons.password_outlined,
-                            color: Colors.deepPurple,
+                            color: myMaterialColor,
                           ),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _showPassword
                                   ? Icons.visibility_outlined
                                   : Icons.visibility_off_outlined,
-                              color: Colors.deepPurple,
+                              color: myMaterialColor,
                             ),
                             onPressed: _togglePasswordVisibility,
                           ),
@@ -185,17 +194,20 @@ class _SignupPageState extends State<SignupPage> {
 
                         decoration: InputDecoration(
                           hintText: "Confirm password",
-                          hintStyle: TextStyle(fontSize: 16),
+                          hintStyle: TextStyle(
+                              fontFamily: "Comfortaa",
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal),
                           prefixIcon: Icon(
                             Icons.password_outlined,
-                            color: Colors.deepPurple,
+                            color: myMaterialColor,
                           ),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _showConfirmPassword
                                   ? Icons.visibility_outlined
                                   : Icons.visibility_off_outlined,
-                              color: Colors.deepPurple,
+                              color: myMaterialColor,
                             ),
                             onPressed: _toggleConfirmPasswordVisibility,
                           ),
@@ -234,14 +246,17 @@ class _SignupPageState extends State<SignupPage> {
                   height: 50,
                   width: 120,
                   decoration: BoxDecoration(
-                    color: Colors.deepPurple,
+                    color: myMaterialColor,
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: Text("Sign Up",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.white)),
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(
+                        fontFamily: "Comfortaa",
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.normal),
+                  ),
                 ),
               ),
               Row(
@@ -260,9 +275,10 @@ class _SignupPageState extends State<SignupPage> {
                     child: Text(
                       'Or sign up with',
                       style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey,
-                      ),
+                          fontFamily: "Comfortaa",
+                          fontSize: 16,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.normal),
                     ),
                   ),
                   Expanded(
@@ -326,11 +342,14 @@ class _SignupPageState extends State<SignupPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text("Already have an account? ",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.grey)),
+                    Text(
+                      "Already have an account? ",
+                      style: TextStyle(
+                          fontFamily: "Comfortaa",
+                          fontSize: 16,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.normal),
+                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -341,10 +360,9 @@ class _SignupPageState extends State<SignupPage> {
                       child: Text(
                         "Login",
                         style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black,
-                        ),
+                            fontFamily: "Comfortaa",
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal),
                       ),
                     ),
                   ],
