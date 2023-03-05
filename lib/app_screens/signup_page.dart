@@ -358,7 +358,7 @@ class _SignupPageState extends State<SignupPage> {
                         );
                       },
                       child: Text(
-                        "Login",
+                        "Sign in",
                         style: TextStyle(
                             fontFamily: "Comfortaa",
                             fontSize: 16,
