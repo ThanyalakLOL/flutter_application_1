@@ -11,8 +11,9 @@ class ImageSlider extends StatefulWidget {
 class _ImageSliderState extends State<ImageSlider> {
   int _currentIndex = 0;
   List<String> _imageUrls = [
-    'images/quiz.jpg',
-    'images/doraemon.jpg',
+    'images/dorm_img/1.jpg',
+    'images/dorm_img/2.jpg',
+    'images/dorm_img/3.jpg',
   ];
 
   @override

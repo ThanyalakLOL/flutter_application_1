@@ -2,6 +2,7 @@ import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/bottom_navbar.dart';
 import 'package:flutter_application_1/material_color.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -132,15 +133,7 @@ class _AddingState extends State<Adding> {
     return Scaffold(
       // backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/');
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.grey[200],
         title: const Text(
           "Add your contact",
@@ -689,7 +682,7 @@ class _AddingState extends State<Adding> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomePage()),
+                                    builder: (context) => CurveBottomNavbar()),
                               );
                             },
                           ),

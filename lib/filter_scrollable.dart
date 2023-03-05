@@ -211,7 +211,7 @@ class _ChipschoiceState extends State<Chipschoice> {
       if (states.any(interactiveStates.contains)) {
         return Colors.blue;
       }
-      return Colors.indigo;
+      return myMaterialColor;
     }
 
     return Checkbox(
@@ -297,7 +297,7 @@ class BottomNavBar extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.all(7),
                   decoration: BoxDecoration(
-                      border: Border.all(width: 2, color: Colors.black)),
+                      border: Border.all(width: 2, color: myMaterialColor)),
                   child: Text(
                     "Clear All",
                     textAlign: TextAlign.center,
@@ -305,7 +305,7 @@ class BottomNavBar extends StatelessWidget {
                         fontFamily: "Comfortaa",
                         fontSize: 18,
                         fontWeight: FontWeight.w900,
-                        color: Colors.black),
+                        color: myMaterialColor),
                   ),
                 ),
               ),
@@ -323,9 +323,9 @@ class BottomNavBar extends StatelessWidget {
                   decoration: BoxDecoration(
                       border: Border.all(
                         width: 2,
-                        color: Colors.black,
+                        color: myMaterialColor,
                       ),
-                      color: Colors.black),
+                      color: myMaterialColor),
                   child: Text(
                     "Done",
                     textAlign: TextAlign.center,

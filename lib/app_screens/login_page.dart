@@ -202,7 +202,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/');
+                  Navigator.pushNamed(context, '/bottombar');
                 },
                 child: Container(
                   alignment: Alignment.center,

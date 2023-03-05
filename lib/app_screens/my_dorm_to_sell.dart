@@ -19,15 +19,6 @@ class _MyDormToSellState extends State<MyDormToSell> {
       backgroundColor: Colors.grey[100],
       // floatingActionButton: HomeFloatingButton(),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/');
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
         backgroundColor: Colors.grey[200],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +26,7 @@ class _MyDormToSellState extends State<MyDormToSell> {
           children: [
             Expanded(
               child: Text(
-                "Your dorm contract",
+                "Dorm contract",
                 style: TextStyle(
                     fontFamily: "Comfortaa",
                     // fontSize: 22,

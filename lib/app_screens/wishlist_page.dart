@@ -1,28 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_application_1/bottom_navbar.dart';
 import 'package:flutter_application_1/home_floating_button.dart';
 import 'package:flutter_application_1/material_color.dart';
 import 'package:flutter_application_1/sorting_listview.dart';
 
 class WishListDormPage extends StatelessWidget {
-  const WishListDormPage({super.key});
+  WishListDormPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
-      floatingActionButton: HomeFloatingButton(),
+      // floatingActionButton: HomeFloatingButton(),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/');
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.grey[200],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,16 +23,8 @@ class WishListDormPage extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  // Icon(
-                  //   Icons.favorite,
-                  //   color: Colors.grey,
-                  // ),
-                  // Padding(
-                  //     padding: EdgeInsets.only(
-                  //   right: 10,
-                  // )),
                   Text(
-                    "WishLists",
+                    "Favorites",
                     style: TextStyle(
                         fontFamily: "Comfortaa",
                         fontSize: 22,
@@ -242,7 +226,7 @@ class WishListDormPage extends StatelessWidget {
                                                         onPressed: () {},
                                                         icon: Icon(
                                                           Icons.favorite,
-                                                          color: Colors.grey,
+                                                          color: Colors.red,
                                                           size: 22,
                                                         )),
                                                   )

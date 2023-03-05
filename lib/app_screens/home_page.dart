@@ -1,6 +1,9 @@
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_application_1/bottom_navbar.dart';
 
 import 'package:flutter_application_1/filter_scrollable.dart';
 import 'package:flutter_application_1/material_color.dart';
@@ -20,33 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var _selectedTab = _SelectedTab.home;
-
-  void _handleIndexChanged(int i) {
-    setState(() {
-      _selectedTab = _SelectedTab.values[i];
-    });
-    switch (i) {
-      case 0:
-        Navigator.pushNamed(context, '/adding_page');
-        break;
-      case 1:
-        Navigator.pushNamed(context, '/fav_page');
-        break;
-      case 2:
-        Navigator.pushNamed(context, '/my_dorm_to_sell_page');
-        break;
-      case 3:
-        Navigator.pushNamed(context, '/profile_page');
-
-        break;
-      case 4:
-        Navigator.pushNamed(context, '/profile_page');
-
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +34,7 @@ class _HomePageState extends State<HomePage> {
             Icon(Icons.holiday_village_rounded),
             Padding(padding: EdgeInsets.only(right: 15)),
             Text(
-              "KKU Dorm",
+              "Room around KKU",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontFamily: "Comfortaa",
@@ -136,50 +112,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      extendBody: true,
-      bottomNavigationBar: DotNavigationBar(
-        dotIndicatorColor: myMaterialColor,
-        backgroundColor: myMaterialColor,
-        currentIndex: _SelectedTab.values.indexOf(_selectedTab),
-        onTap: _handleIndexChanged,
-
-        // dotIndicatorColor: Colors.black,
-        items: [
-          ///adding_dorm
-          DotNavigationBarItem(
-              icon: const Icon(Icons.my_library_add),
-              selectedColor: Colors.white,
-              unselectedColor: Colors.white),
-
-          /// favorite
-          DotNavigationBarItem(
-              icon: const Icon(Icons.favorite),
-              selectedColor: Colors.white,
-              unselectedColor: Colors.white),
-
-          /// myDorm
-          DotNavigationBarItem(
-              icon: const Icon(
-                Icons.list_alt_outlined,
-              ),
-              selectedColor: Colors.white,
-              unselectedColor: Colors.white),
-
-          /// chat
-          DotNavigationBarItem(
-              icon: const Icon(Icons.chat),
-              selectedColor: Colors.white,
-              unselectedColor: Colors.white),
-
-          /// Profile
-          DotNavigationBarItem(
-              icon: const Icon(Icons.account_circle),
-              selectedColor: Colors.white,
-              unselectedColor: Colors.white),
-        ],
-      ),
     );
   }
 }
-
-enum _SelectedTab { adding_dorm, favorite, chat, profile, home }

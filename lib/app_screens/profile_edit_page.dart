@@ -9,8 +9,10 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class ProfileEditPage extends StatefulWidget {
-  const ProfileEditPage({Key? key, required this.newInfo}) : super(key: key);
-  final String newInfo;
+  const ProfileEditPage({
+    Key? key,
+  }) : super(key: key);
+  // final String newInfo;
 
   @override
   _ProfileEditPageState createState() => _ProfileEditPageState();
@@ -82,15 +84,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       // floatingActionButton: HomeFloatingButton(),
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/');
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.grey[200],
         title: Row(
           children: [
@@ -120,117 +114,120 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Padding(padding: EdgeInsets.all(10)),
-              Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  image != null
-                      ? CircleAvatar(
-                          radius: 100,
-                          backgroundImage: FileImage(
-                            File(image!.path),
+        child: SafeArea(
+          child: Center(
+            child: Column(
+              children: [
+                Padding(padding: EdgeInsets.all(10)),
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    image != null
+                        ? CircleAvatar(
+                            radius: 100,
+                            backgroundImage: FileImage(
+                              File(image!.path),
+                            ),
+                          )
+                        : CircleAvatar(
+                            backgroundImage: AssetImage("images/nobita.jpg"),
+                            radius: 100,
                           ),
-                        )
-                      : CircleAvatar(
-                          backgroundImage: AssetImage("images/nobita.jpg"),
-                          radius: 100,
+                    Positioned(
+                      right: -10,
+                      bottom: 2,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.grey.shade50,
+                            width: 5,
+                          ),
+                          shape: BoxShape.circle,
+                          color: Colors.grey[500],
                         ),
-                  Positioned(
-                    right: -10,
-                    bottom: 2,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey.shade50,
-                          width: 5,
-                        ),
-                        shape: BoxShape.circle,
-                        color: Colors.grey[500],
-                      ),
-                      child: IconButton(
-                        onPressed: () {
-                          myAlert();
-                        },
-                        icon: Icon(
-                          Icons.settings,
-                          color: Colors.white,
-                          size: 30,
+                        child: IconButton(
+                          onPressed: () {
+                            myAlert();
+                          },
+                          icon: Icon(
+                            Icons.settings,
+                            color: Colors.white,
+                            size: 30,
+                          ),
                         ),
                       ),
                     ),
+                  ],
+                ),
+                Padding(padding: EdgeInsets.all(10)),
+                Text(
+                  "Nobita",
+                  style: TextStyle(
+                      fontFamily: "Comfortaa",
+                      fontSize: 25,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.black),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "About you",
+                    style: TextStyle(
+                        fontFamily: "Comfortaa",
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey),
                   ),
-                ],
-              ),
-              Padding(padding: EdgeInsets.all(10)),
-              Text(
-                "Nobita",
-                style: TextStyle(
-                    fontFamily: "Comfortaa",
-                    fontSize: 25,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black),
-              ),
-              Container(
-                padding: EdgeInsets.all(10),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "About you",
-                  style: TextStyle(
-                      fontFamily: "Comfortaa",
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.grey),
                 ),
-              ),
-              ProfileRow(
-                topic: "Account Name",
-                info: "Nobita",
-                legthInfo: 30,
-                type: 'text',
-              ),
-              ProfileRow(
-                topic: "Name",
-                info: "Nobita Kung",
-                legthInfo: 50,
-                type: 'text',
-              ),
-              Divider(
-                height: 20,
-              ),
-              Container(
-                padding: EdgeInsets.all(10),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Contact",
-                  style: TextStyle(
-                      fontFamily: "Comfortaa",
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.grey),
+                ProfileRow(
+                  topic: "Account Name",
+                  info: "Nobita",
+                  legthInfo: 30,
+                  type: 'text',
                 ),
-              ),
-              ProfileRow(
-                topic: "Phone",
-                info: "0822888888",
-                type: 'numer',
-                legthInfo: 10,
-              ),
-              ProfileRow(
-                topic: "Facebook",
-                info: "xxxx",
-                legthInfo: 50,
-                type: 'text',
-              ),
-              ProfileRow(
-                topic: "ID LINE",
-                info: "xxx",
-                legthInfo: 30,
-                type: 'text',
-              )
-            ],
+                ProfileRow(
+                  topic: "Name",
+                  info: "Nobita Kung",
+                  legthInfo: 50,
+                  type: 'text',
+                ),
+                Divider(
+                  height: 20,
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Contact",
+                    style: TextStyle(
+                        fontFamily: "Comfortaa",
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey),
+                  ),
+                ),
+                ProfileRow(
+                  topic: "Phone",
+                  info: "0822888888",
+                  type: 'numer',
+                  legthInfo: 10,
+                ),
+                ProfileRow(
+                  topic: "Facebook",
+                  info: "xxxx",
+                  legthInfo: 50,
+                  type: 'text',
+                ),
+                ProfileRow(
+                  topic: "ID LINE",
+                  info: "xxx",
+                  legthInfo: 30,
+                  type: 'text',
+                ),
+                Padding(padding: EdgeInsets.only(bottom: 10))
+              ],
+            ),
           ),
         ),
       ),

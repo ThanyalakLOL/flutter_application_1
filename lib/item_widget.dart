@@ -80,7 +80,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                       Container(
                         padding: EdgeInsets.only(left: 10),
                         child: Text(
-                          "5000 BATH/MONTH",
+                          "5000 BAHT/MONTH",
                           style: TextStyle(
                               fontFamily: "Comfortaa",
                               fontSize: 16,

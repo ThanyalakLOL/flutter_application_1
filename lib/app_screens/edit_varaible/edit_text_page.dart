@@ -11,6 +11,7 @@ class EdittextPage extends StatefulWidget {
     super.key,
     required this.length,
     required this.topic,
+    newInfo,
   });
   final int length;
   final String topic;
@@ -36,7 +37,9 @@ class _EdittextPageState extends State<EdittextPage> {
           children: [
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/');
+                Navigator.pop(
+                  context,
+                );
               },
               child: Text(
                 'Cancel',

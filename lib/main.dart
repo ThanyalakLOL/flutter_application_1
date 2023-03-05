@@ -10,8 +10,10 @@ import 'package:flutter_application_1/app_screens/profile_edit_page.dart';
 import 'package:flutter_application_1/app_screens/signup_page.dart';
 import 'package:flutter_application_1/app_screens/wishlist_page.dart';
 import 'package:flutter_application_1/app_screens/edit_varaible/edit_text_page.dart';
+import 'package:flutter_application_1/bottom_navbar.dart';
 import 'package:flutter_application_1/material_color.dart';
 import 'package:flutter_application_1/profile_row.dart';
+import 'package:flutter_application_1/test.dart';
 
 import 'app_screens/image_upload.dart';
 
@@ -27,20 +29,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/bottombar',
       routes: {
-        '/': (context) => const HomePage(),
+        '/': (context) => const CurveBottomNavbar(),
         '/adding_page': (context) => const Adding(),
-        '/fav_page': (context) => const WishListDormPage(),
-        '/profile_page': (context) => const ProfileEditPage(
-              newInfo: '',
-            ),
+        '/fav_page': (context) => WishListDormPage(),
+        // '/profile_page': (context) => const ProfileEditPage(),
         '/create_account_page': (context) => const CreateAccountPage(),
         '/login_page': (context) => LoginPage(),
         '/signup_page': (context) => SignupPage(),
         '/detail_page': (context) => DetailPage(),
-        '/edit_my_dorm': (context) => EditMyDormPage(),
+        '/edit_my_dorm': (context) => EditDormPage(),
         '/my_dorm_to_sell_page': (context) => MyDormToSell(),
+        '/test': (context) => Test(),
+        // '/bottombar': (context) => CurveBottomNavbar(),
       },
       theme: ThemeData(
         iconTheme: IconThemeData(color: Colors.black87),
