@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.all(20),
+                margin: EdgeInsets.all(10),
                 // margin: EdgeInsets.only(bottom: 20),
                 width: width,
                 height: height * 0.3,
@@ -198,7 +198,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 10,
               ),
               GestureDetector(
                 onTap: () {
@@ -223,8 +223,84 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(left: 12),
+                      child: Divider(
+                        color: Colors.grey,
+                        thickness: 0.3,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text(
+                      'Or sign in with',
+                      style: TextStyle(
+                          fontFamily: "Comfortaa",
+                          fontSize: 16,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.only(right: 12),
+                      child: Divider(
+                        color: Colors.grey,
+                        thickness: 0.3,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Wrap(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.7),
+                          spreadRadius: 3,
+                          blurRadius: 5,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    margin: EdgeInsets.only(left: 10, right: 10),
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.white,
+                      backgroundImage: AssetImage('images/google.png'),
+                      radius: 25,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 10, right: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.7),
+                          spreadRadius: 3,
+                          blurRadius: 5,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('images/facebook.png'),
+                      radius: 25,
+                    ),
+                  ),
+                ],
+              ),
               Container(
-                height: 70,
+                height: 30,
                 width: width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

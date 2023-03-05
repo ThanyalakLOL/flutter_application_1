@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         '/login_page': (context) => LoginPage(),
         '/signup_page': (context) => SignupPage(),
         '/detail_page': (context) => DetailPage(),
-        '/edit_my_dorm': (context) => EditMyDormPage(),
+        '/edit_my_dorm': (context) => EditDormPage(),
         '/my_dorm_to_sell_page': (context) => MyDormToSell(),
       },
       theme: ThemeData(

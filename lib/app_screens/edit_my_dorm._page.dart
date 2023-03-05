@@ -143,7 +143,7 @@ class _EditDormPageState extends State<EditDormPage> {
         ),
         backgroundColor: Colors.grey[200],
         title: const Text(
-          "Add your contact",
+          "Edit your contact",
           style: TextStyle(
               fontFamily: "Comfortaa",
               fontSize: 22,
