@@ -134,7 +134,7 @@ class _EditDormPageState extends State<EditDormPage> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/');
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.arrow_back,
@@ -686,11 +686,7 @@ class _EditDormPageState extends State<EditDormPage> {
                               ),
                             ),
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()),
-                              );
+                              Navigator.pop(context);
                             },
                           ),
                         ],

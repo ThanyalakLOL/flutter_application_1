@@ -14,6 +14,7 @@ class _NameDormState extends State<NameDorm> {
 
   @override
   Widget build(BuildContext context) {
+    final screenW = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -27,7 +28,9 @@ class _NameDormState extends State<NameDorm> {
                 children: [
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.only(top: 10, left: 10),
+                      margin: screenW <= 600
+                          ? EdgeInsets.only(top: 10, left: 10)
+                          : EdgeInsets.only(top: 0, left: 10),
                       child: Text("Serenity Condo",
                           style: TextStyle(
                               fontSize: 25,
@@ -102,20 +105,30 @@ class _NameDormState extends State<NameDorm> {
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Icon(
-                  Icons.phone,
-                  color: myMaterialColor,
-                  size: 30.0,
+              GestureDetector(
+                onTap: () {
+                  _showDialogNumber(context);
+                },
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: Icon(
+                    Icons.phone,
+                    color: myMaterialColor,
+                    size: 30.0,
+                  ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Icon(
-                  Icons.message,
-                  color: myMaterialColor,
-                  size: 30.0,
+              GestureDetector(
+                onTap: () {
+                  _showDialogContact(context);
+                },
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: Icon(
+                    Icons.message,
+                    color: myMaterialColor,
+                    size: 30.0,
+                  ),
                 ),
               ),
             ],
@@ -124,6 +137,44 @@ class _NameDormState extends State<NameDorm> {
       ],
     );
   }
+
+  void _showDialogNumber(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Phone number"),
+            content: Text("081 789 2458"),
+            actions: <Widget>[
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text("OK"),
+              ),
+            ],
+          );
+        });
+  }
+}
+
+void _showDialogContact(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Contact"),
+          content: Text("Facebook : John Wick\nID Line: JohnWickHandsome"),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      });
 }
 
 class Facility extends StatefulWidget {

@@ -13,11 +13,17 @@ class FilterSelected extends StatefulWidget {
 
 class _FilterSelectedState extends State<FilterSelected> {
   bool _isSelected = false;
-  int i = 3;
+  final facilities = <String>[
+    "เครื่องทำน้ำอุ่น",
+    "ลิฟต์",
+    'แอร์',
+    'ตู้เย็น',
+    'ทีวี',
+  ];
 
   void _decrementI() {
     setState(() {
-      i--;
+      facilities.length--;
     });
   }
 
@@ -137,7 +143,7 @@ class _FilterSelectedState extends State<FilterSelected> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                for (int j = 1; j <= i; j++)
+                for (int j = 1; j <= facilities.length; j++)
                   Container(
                     height: 35,
                     alignment: Alignment.center,
@@ -159,7 +165,7 @@ class _FilterSelectedState extends State<FilterSelected> {
                       children: [
                         Padding(padding: EdgeInsets.only(left: 15)),
                         Text(
-                          "Filter",
+                          facilities[j - 1],
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontFamily: "Comfortaa",

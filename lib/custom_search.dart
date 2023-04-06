@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   List<String> searchTerms = [
-    "Appsdgffdale",
-    "Banana",
-    "Mango",
-    "Pear",
-    "Watermelons",
-    "Blueberries",
-    "Pineapples",
-    "Strawberries"
+    'AP Boulevard',
+    'ธนาทิป อพาร์ทเมนต์',
+    'สุพรีมเพลส',
+    'บ้านน้ำทิพย์',
+    'ธนาภาอพาร์ทเมนท์',
+    'หอพักนานาชาติอังกาบ',
+    'สิริสมัยอพาร์ทเม้นต์',
+    'The favorite',
   ];
 
 // first overwrite to

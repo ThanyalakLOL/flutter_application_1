@@ -12,61 +12,57 @@ class Test extends StatefulWidget {
 }
 
 class _TestState extends State<Test> {
-  int _page = 0;
-  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  bool _isEditingText = false;
+  late TextEditingController _editingController;
+  String initialText = "Initial Text";
+  @override
+  void initState() {
+    super.initState();
+    _editingController = TextEditingController(text: initialText);
+  }
+
+  @override
+  void dispose() {
+    _editingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
-        key: _bottomNavigationKey,
-        items: [
-          CurvedNavigationBarItem(
-            child: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          CurvedNavigationBarItem(
-            child: Icon(Icons.search),
-            label: 'Search',
-          ),
-          CurvedNavigationBarItem(
-            child: Icon(Icons.chat_bubble_outline),
-            label: 'Chat',
-          ),
-          CurvedNavigationBarItem(
-            child: Icon(Icons.newspaper),
-            label: 'Feed',
-          ),
-          CurvedNavigationBarItem(
-            child: Icon(Icons.perm_identity),
-            label: 'Personal',
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _page = index;
-          });
-        },
+      appBar: AppBar(
+        title: Text("'Editable Text"),
       ),
-      body: Container(
-        color: Colors.blueAccent,
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Text(_page.toString(), textScaleFactor: 10.0),
-              ElevatedButton(
-                child: Text('Go To Page of index 1'),
-                onPressed: () {
-                  // Page change using state does the same as clicking index 1 navigation button
-                  final CurvedNavigationBarState? navBarState =
-                      _bottomNavigationKey.currentState;
-                  navBarState?.setPage(1);
-                },
-              )
-            ],
-          ),
-        ),
+      body: Center(
+        child: _editTitleTextField(),
       ),
     );
+  }
+
+  Widget _editTitleTextField() {
+    if (_isEditingText)
+      return Center(
+        child: TextField(
+          onSubmitted: (newValue) {
+            setState(() {
+              initialText = newValue;
+              _isEditingText = false;
+            });
+          },
+          autofocus: true,
+          controller: _editingController,
+        ),
+      );
+    return InkWell(
+        onTap: () {
+          setState(() {
+            _isEditingText = true;
+          });
+        },
+        child: Text(initialText,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18.0,
+            )));
   }
 }

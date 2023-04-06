@@ -64,6 +64,7 @@ class _ProfileRowState extends State<ProfileRow> {
                           MaterialPageRoute(
                               builder: (context) => EditPhoneNumPage(
                                     topic: widget.topic,
+                                    currentInfo: '',
                                   )),
                         );
                 },

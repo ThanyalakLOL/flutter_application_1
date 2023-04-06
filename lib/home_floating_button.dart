@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_application_1/material_color.dart';
 
 class HomeFloatingButton extends StatefulWidget {
   const HomeFloatingButton({super.key});
@@ -14,7 +15,7 @@ class _HomeFloatingButtonState extends State<HomeFloatingButton> {
   Widget build(BuildContext context) {
     bool clicked = false;
     return FloatingActionButton(
-      backgroundColor: Colors.indigo,
+      backgroundColor: myMaterialColor,
       onPressed: () {
         setState(() {
           clicked = true;

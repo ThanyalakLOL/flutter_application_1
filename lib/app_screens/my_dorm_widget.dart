@@ -19,9 +19,10 @@ class _MyDormItemWidgetState extends State<MyDormItemWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final screenW = MediaQuery.of(context).size.width;
     return GridView.count(
       physics: NeverScrollableScrollPhysics(),
-      childAspectRatio: (20 / 17),
+      childAspectRatio: screenW <= 600 ? (20 / 17) : (20 / 9),
       crossAxisCount: 1,
       shrinkWrap: true,
       children: [

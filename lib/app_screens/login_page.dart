@@ -245,8 +245,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               GestureDetector(
                 onTap: () {
-                  // Navigator.pushNamed(context, '/bottombar');
-                  _signInWithEmailAndPassword();
+                  Navigator.pushNamed(context, '/bottombar');
+                  // _signInWithEmailAndPassword();
                 },
                 child: Container(
                   alignment: Alignment.center,

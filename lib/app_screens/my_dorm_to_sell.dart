@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_application_1/app_screens/my_dorm_widget.dart';
+import 'package:flutter_application_1/custom_search.dart';
 import 'package:flutter_application_1/home_floating_button.dart';
 import 'package:flutter_application_1/item_widget.dart';
 
@@ -15,10 +16,13 @@ class MyDormToSell extends StatefulWidget {
 class _MyDormToSellState extends State<MyDormToSell> {
   @override
   Widget build(BuildContext context) {
+    final screenW = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.grey[100],
       // floatingActionButton: HomeFloatingButton(),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.grey[200],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +40,10 @@ class _MyDormToSellState extends State<MyDormToSell> {
             ),
             IconButton(
                 alignment: Alignment.bottomRight,
-                onPressed: () {},
+                onPressed: () {
+                  showSearch(
+                      context: context, delegate: CustomSearchDelegate());
+                },
                 icon: Icon(
                   Icons.manage_search_rounded,
                   color: Colors.grey[800],

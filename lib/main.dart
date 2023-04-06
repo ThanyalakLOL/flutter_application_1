@@ -18,17 +18,17 @@ import 'package:flutter_application_1/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'app_screens/image_upload.dart';
-import 'logintest.dart';
+// import 'logintest.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
+void main() {
+  runApp(const MyApp());
 }
+
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp();
+//   runApp(MyApp());
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/bottombar',
+      initialRoute: '/',
       routes: {
         '/': (context) => const CurveBottomNavbar(),
         '/adding_page': (context) => const Adding(),

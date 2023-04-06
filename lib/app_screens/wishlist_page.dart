@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_application_1/bottom_navbar.dart';
+import 'package:flutter_application_1/custom_search.dart';
 import 'package:flutter_application_1/home_floating_button.dart';
 import 'package:flutter_application_1/material_color.dart';
 import 'package:flutter_application_1/sorting_listview.dart';
@@ -11,6 +12,7 @@ class WishListDormPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenW = MediaQuery.of(context).size.width;
     return Scaffold(
       // floatingActionButton: HomeFloatingButton(),
       appBar: AppBar(
@@ -36,7 +38,10 @@ class WishListDormPage extends StatelessWidget {
             ),
             IconButton(
                 alignment: Alignment.bottomRight,
-                onPressed: () {},
+                onPressed: () {
+                  showSearch(
+                      context: context, delegate: CustomSearchDelegate());
+                },
                 icon: Icon(
                   Icons.manage_search_rounded,
                   color: Colors.grey[800],
@@ -97,7 +102,7 @@ class WishListDormPage extends StatelessWidget {
           Container(
             child: GridView.count(
               physics: NeverScrollableScrollPhysics(),
-              childAspectRatio: (100 / 45),
+              childAspectRatio: screenW <= 600 ? (100 / 45) : (100 / 24),
               crossAxisCount: 1,
               shrinkWrap: true,
               children: [

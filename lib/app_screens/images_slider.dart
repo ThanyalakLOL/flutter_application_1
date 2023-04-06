@@ -18,6 +18,7 @@ class _ImageSliderState extends State<ImageSlider> {
 
   @override
   Widget build(BuildContext context) {
+    final screenW = MediaQuery.of(context).size.width;
     return Container(
       // color: Colors.cyan,
       child: Stack(
@@ -28,8 +29,8 @@ class _ImageSliderState extends State<ImageSlider> {
                 items: _imageUrls.map((imageUrl) {
                   return Container(
                     margin: EdgeInsets.all(5),
-                    height: 300.0,
-                    width: 300.0,
+                    height: screenW <= 600 ? 300.0 : 80,
+                    width: screenW <= 600 ? 300.0 : null,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       //set border radius to 50% of square height and width
@@ -43,7 +44,7 @@ class _ImageSliderState extends State<ImageSlider> {
                 options: CarouselOptions(
                   autoPlay: false,
                   enlargeCenterPage: true,
-                  aspectRatio: 16 / 9,
+                  aspectRatio: screenW <= 600 ? 16 / 9 : 16 / 5,
                   enableInfiniteScroll: false,
                   onPageChanged: (index, _) {
                     setState(() {

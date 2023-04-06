@@ -61,17 +61,7 @@ class _EdittextPageState extends State<EdittextPage> {
             TextButton(
               onPressed: newInfo.isNotEmpty
                   ? () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProfileRow(
-                            topic: widget.topic,
-                            info: newInfo,
-                            type: 'text',
-                            legthInfo: widget.length,
-                          ),
-                        ),
-                      );
+                      Navigator.pop(context);
                     }
                   : null,
               child: Text(

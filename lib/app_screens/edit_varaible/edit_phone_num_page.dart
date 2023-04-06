@@ -7,6 +7,7 @@ class EditPhoneNumPage extends StatefulWidget {
   const EditPhoneNumPage({
     Key? key,
     required this.topic,
+    required String currentInfo,
   }) : super(key: key);
   final String topic;
   @override
@@ -30,7 +31,7 @@ class _EditPhoneNumPageState extends State<EditPhoneNumPage> {
           children: [
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/profile_page');
+                Navigator.pop(context);
               },
               child: Text(
                 'Cancel',
@@ -52,7 +53,7 @@ class _EditPhoneNumPageState extends State<EditPhoneNumPage> {
             TextButton(
               onPressed: _topic.isNotEmpty
                   ? () {
-                      Navigator.pushNamed(context, '/profile_page');
+                      Navigator.pop(context);
                     }
                   : null,
               child: Text(
