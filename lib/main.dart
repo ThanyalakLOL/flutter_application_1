@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app_screens/adding_dorm.dart';
 import 'package:flutter_application_1/app_screens/create_account.dart';
@@ -14,11 +15,19 @@ import 'package:flutter_application_1/bottom_navbar.dart';
 import 'package:flutter_application_1/material_color.dart';
 import 'package:flutter_application_1/profile_row.dart';
 import 'package:flutter_application_1/test.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'app_screens/image_upload.dart';
+import 'logintest.dart';
 
-void main() {
-  runApp(const MyApp());
+// void main() {
+//   runApp(const MyApp());
+// }
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -37,7 +46,7 @@ class MyApp extends StatelessWidget {
         // '/profile_page': (context) => const ProfileEditPage(),
         '/create_account_page': (context) => const CreateAccountPage(),
         '/login_page': (context) => LoginPage(),
-        '/signup_page': (context) => SignupPage(),
+        '/signup_page': (context) => const SignupPage(),
         '/detail_page': (context) => DetailPage(),
         '/edit_my_dorm': (context) => EditDormPage(),
         '/my_dorm_to_sell_page': (context) => MyDormToSell(),

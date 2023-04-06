@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app_screens/signup_page.dart';
 import 'package:flutter_application_1/material_color.dart';
+
+import '../bottom_navbar.dart';
+import 'detailpage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,6 +15,43 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _showPassword = false;
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+
+    super.dispose();
+  }
+
+  // Future _signInWithEmailAndPassword() async {
+  //   await FirebaseAuth.instance.signInWithEmailAndPassword(
+  //     email: _emailController.text.trim(),
+  //     password: _passwordController.text.trim(),
+  //   );
+  // }
+
+  void _signInWithEmailAndPassword() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => CurveBottomNavbar()));
+      // Navigate to home screen after successful login
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("username or password is incorrect"),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -92,6 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                           ]),
                       height: 50,
                       child: TextField(
+                        controller: _emailController,
                         decoration: InputDecoration(
                           hintText: "Email",
                           hintStyle: TextStyle(
@@ -138,6 +180,7 @@ class _LoginPageState extends State<LoginPage> {
                           ]),
                       height: 50,
                       child: TextField(
+                        controller: _passwordController,
                         obscureText:
                             !_showPassword, // add this line to show dots instead of text
 
@@ -202,7 +245,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/bottombar');
+                  // Navigator.pushNamed(context, '/bottombar');
+                  _signInWithEmailAndPassword();
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -223,6 +267,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
+              // ElevatedButton.icon(
+              //   onPressed: _signInWithEmailAndPassword,
+              //   icon: Icon(Icons.lock_open_sharp),
+              //   label: Text("siggggg"),
+              // ),
               Row(
                 children: [
                   Expanded(

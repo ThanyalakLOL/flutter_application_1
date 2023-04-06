@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "21208402015",
+    "project_id": "flutter-find-dorm",
+    "storage_bucket": "flutter-find-dorm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21208402015:android:299190347bb80b52f5b3ea",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21208402015-q6ch7n553rnafntkdojpo6fpfudi6ghg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0_3beVWhohL8OGIg5sfiY74nlNPuNrL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21208402015-q6ch7n553rnafntkdojpo6fpfudi6ghg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
